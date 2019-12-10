@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="shortenURLModelStoreContainer" CdmEntityContainer="shortenURLEntities">
+    <EntitySetMapping Name="BatchUploadDatas">
+      <EntityTypeMapping TypeName="shortenURLModel.BatchUploadData">
+        <MappingFragment StoreEntitySet="BatchUploadData">
+          <ScalarProperty Name="PK_Batchid" ColumnName="PK_Batchid" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="Longurl" ColumnName="Longurl" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="shortenURLModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="PK_ClientID" ColumnName="PK_ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+          <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CountryDatas">
+      <EntityTypeMapping TypeName="shortenURLModel.CountryData">
+        <MappingFragment StoreEntitySet="CountryData">
+          <ScalarProperty Name="PK_Country_ID" ColumnName="PK_Country_ID" />
+          <ScalarProperty Name="Start_IPv4_address" ColumnName="Start_IPv4_address" />
+          <ScalarProperty Name="End_IPv4_address" ColumnName="End_IPv4_address" />
+          <ScalarProperty Name="Start_IP_num" ColumnName="Start_IP_num" />
+          <ScalarProperty Name="End_IP_num" ColumnName="End_IP_num" />
+          <ScalarProperty Name="Country_code" ColumnName="Country_code" />
+          <ScalarProperty Name="Country_name" ColumnName="Country_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ErrorLogs">
+      <EntityTypeMapping TypeName="shortenURLModel.ErrorLog">
+        <MappingFragment StoreEntitySet="ErrorLog">
+          <ScalarProperty Name="PKErrorLogId" ColumnName="PKErrorLogId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations_Data">
+      <EntityTypeMapping TypeName="shortenURLModel.Locations_Data">
+        <MappingFragment StoreEntitySet="Locations_Data">
+          <ScalarProperty Name="PK_LOC_ID" ColumnName="PK_LOC_ID" />
+          <ScalarProperty Name="locId" ColumnName="locId" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="metroCode" ColumnName="metroCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginHistories">
+      <EntityTypeMapping TypeName="shortenURLModel.LoginHistory">
+        <MappingFragment StoreEntitySet="LoginHistory">
+          <ScalarProperty Name="PKLoginHistoryId" ColumnName="PKLoginHistoryId" />
+          <ScalarProperty Name="FKPersonId" ColumnName="FKPersonId" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Master_Location">
+      <EntityTypeMapping TypeName="shortenURLModel.Master_Location">
+        <MappingFragment StoreEntitySet="Master_Location">
+          <ScalarProperty Name="PK_MASTERID" ColumnName="PK_MASTERID" />
+          <ScalarProperty Name="Start_IPv4_address" ColumnName="Start_IPv4_address" />
+          <ScalarProperty Name="End_IPv4_address" ColumnName="End_IPv4_address" />
+          <ScalarProperty Name="startIpNum" ColumnName="startIpNum" />
+          <ScalarProperty Name="endIpNum" ColumnName="endIpNum" />
+          <ScalarProperty Name="locId" ColumnName="locId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RIDDATAs">
+      <EntityTypeMapping TypeName="shortenURLModel.RIDDATA">
+        <MappingFragment StoreEntitySet="RIDDATA">
+          <ScalarProperty Name="PK_Rid" ColumnName="PK_Rid" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="FK_ClientId" ColumnName="FK_ClientId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SHORTURLDATAs">
+      <EntityTypeMapping TypeName="shortenURLModel.SHORTURLDATA">
+        <MappingFragment StoreEntitySet="SHORTURLDATA">
+          <ScalarProperty Name="PK_Shorturl" ColumnName="PK_Shorturl" />
+          <ScalarProperty Name="Ipv4" ColumnName="Ipv4" />
+          <ScalarProperty Name="Ipv6" ColumnName="Ipv6" />
+          <ScalarProperty Name="ip_num" ColumnName="ip_num" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="Browser_version" ColumnName="Browser_version" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="City_Latitude" ColumnName="City_Latitude" />
+          <ScalarProperty Name="City_Longitude" ColumnName="City_Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="MetroCode" ColumnName="MetroCode" />
+          <ScalarProperty Name="Req_url" ColumnName="Req_url" />
+          <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+          <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="DeviceBrand" ColumnName="DeviceBrand" />
+          <ScalarProperty Name="OS_Name" ColumnName="OS_Name" />
+          <ScalarProperty Name="OS_Version" ColumnName="OS_Version" />
+          <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FK_Uid" ColumnName="FK_Uid" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="FK_City_Master_id" ColumnName="FK_City_Master_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="shortenURLModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tmp_rownum_update">
+      <EntityTypeMapping TypeName="shortenURLModel.tmp_rownum_update">
+        <MappingFragment StoreEntitySet="tmp_rownum_update">
+          <ScalarProperty Name="PK_RowUpdate_ID" ColumnName="PK_RowUpdate_ID" />
+          <ScalarProperty Name="row_update" ColumnName="row_update" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UIDDATAs">
+      <EntityTypeMapping TypeName="shortenURLModel.UIDDATA">
+        <MappingFragment StoreEntitySet="UIDDATA">
+          <ScalarProperty Name="PK_Uid" ColumnName="PK_Uid" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="Longurl" ColumnName="Longurl" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UniqueNumber" ColumnName="UniqueNumber" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="FK_Batchid" ColumnName="FK_Batchid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="shortenURLModel.Store.Split" FunctionImportName="Split">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="shortenURLModel.Split_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="InsertintoUIDRID" FunctionName="shortenURLModel.Store.InsertintoUIDRID" />
+    <FunctionImportMapping FunctionImportName="InsertRIDData" FunctionName="shortenURLModel.Store.InsertRIDData" />
+    <FunctionImportMapping FunctionImportName="InsertSHORTURLData" FunctionName="shortenURLModel.Store.InsertSHORTURLData" />
+    <FunctionImportMapping FunctionImportName="InsertUIDData" FunctionName="shortenURLModel.Store.InsertUIDData" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="shortenURLModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="shortenURLModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="shortenURLModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="shortenURLModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="shortenURLModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="shortenURLModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="shortenURLModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="shortenURLModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="shortenURLModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="spGetALLCOUNTS" FunctionName="shortenURLModel.Store.spGetALLCOUNTS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="shortenURLModel.spGetALLCOUNTS_Result">
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="YearsCount" ColumnName="YearsCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetALLCOUNTS1" FunctionName="shortenURLModel.Store.spGetALLCOUNTS1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="shortenURLModel.spGetALLCOUNTS1_Result">
+          <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
+          <ScalarProperty Name="RequestCount" ColumnName="RequestCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetCampaignSummary" FunctionName="shortenURLModel.Store.spGetCampaignSummary" />
+    <FunctionImportMapping FunctionImportName="spGetDashBoardSummary" FunctionName="shortenURLModel.Store.spGetDashBoardSummary" />
+    <FunctionImportMapping FunctionImportName="spGetDashBoardSummary1" FunctionName="shortenURLModel.Store.spGetDashBoardSummary1" />
+    <EntitySetMapping Name="freeGeoipDatas">
+      <EntityTypeMapping TypeName="shortenURLModel.freeGeoipData">
+        <MappingFragment StoreEntitySet="freeGeoipData">
+          <ScalarProperty Name="MetroCode" ColumnName="MetroCode" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ip_num" ColumnName="ip_num" />
+          <ScalarProperty Name="Ipv4" ColumnName="Ipv4" />
+          <ScalarProperty Name="PK_freeGeoip_id" ColumnName="PK_freeGeoip_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

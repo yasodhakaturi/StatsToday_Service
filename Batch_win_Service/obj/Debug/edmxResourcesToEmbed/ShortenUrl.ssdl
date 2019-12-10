@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="shortenURLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BatchUploadData">
+    <Key>
+      <PropertyRef Name="PK_Batchid" />
+    </Key>
+    <Property Name="PK_Batchid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReferenceNumber" Type="nvarchar(max)" />
+    <Property Name="Longurl" Type="nvarchar(max)" />
+    <Property Name="MobileNumber" Type="nvarchar(max)" />
+    <Property Name="BatchName" Type="nvarchar(max)" />
+    <Property Name="FK_RID" Type="int" />
+    <Property Name="FK_ClientID" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar(max)" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="PK_ClientID" />
+    </Key>
+    <Property Name="PK_ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoginDate" Type="datetime" />
+    <Property Name="LoginCount" Type="int" />
+    <Property Name="APIKey" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CountryData">
+    <Key>
+      <PropertyRef Name="PK_Country_ID" />
+    </Key>
+    <Property Name="PK_Country_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Start_IPv4_address" Type="nvarchar(max)" />
+    <Property Name="End_IPv4_address" Type="nvarchar(max)" />
+    <Property Name="Start_IP_num" Type="nvarchar(max)" />
+    <Property Name="End_IP_num" Type="nvarchar(max)" />
+    <Property Name="Country_code" Type="nvarchar(max)" />
+    <Property Name="Country_name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="PKErrorLogId" />
+    </Key>
+    <Property Name="PKErrorLogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="StackTrace" Type="nvarchar(max)" />
+    <Property Name="ErrorMessage" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="freeGeoipData">
+    <Key>
+      <PropertyRef Name="PK_freeGeoip_id" />
+    </Key>
+    <Property Name="PK_freeGeoip_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ipv4" Type="nvarchar(max)" />
+    <Property Name="ip_num" Type="bigint" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar(max)" />
+    <Property Name="Latitude" Type="nvarchar(max)" />
+    <Property Name="Longitude" Type="nvarchar(max)" />
+    <Property Name="MetroCode" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Locations_Data">
+    <Key>
+      <PropertyRef Name="PK_LOC_ID" />
+    </Key>
+    <Property Name="PK_LOC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="locId" Type="int" Nullable="false" />
+    <Property Name="country" Type="nvarchar(max)" />
+    <Property Name="region" Type="nvarchar(max)" />
+    <Property Name="city" Type="nvarchar(max)" />
+    <Property Name="postalCode" Type="nvarchar(max)" />
+    <Property Name="latitude" Type="nvarchar(max)" />
+    <Property Name="longitude" Type="nvarchar(max)" />
+    <Property Name="metroCode" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LoginHistory">
+    <Key>
+      <PropertyRef Name="PKLoginHistoryId" />
+    </Key>
+    <Property Name="PKLoginHistoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FKPersonId" Type="int" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" />
+    <Property Name="IpAddress" Type="nvarchar(max)" />
+    <Property Name="LoginDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Master_Location">
+    <Key>
+      <PropertyRef Name="PK_MASTERID" />
+    </Key>
+    <Property Name="PK_MASTERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Start_IPv4_address" Type="nvarchar(max)" />
+    <Property Name="End_IPv4_address" Type="nvarchar(max)" />
+    <Property Name="startIpNum" Type="bigint" Nullable="false" />
+    <Property Name="endIpNum" Type="bigint" Nullable="false" />
+    <Property Name="locId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RIDDATA">
+    <Key>
+      <PropertyRef Name="PK_Rid" />
+    </Key>
+    <Property Name="PK_Rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CampaignName" Type="nvarchar(max)" />
+    <Property Name="ReferenceNumber" Type="nvarchar" MaxLength="450" Nullable="false" />
+    <Property Name="Pwd" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="FK_ClientId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="SHORTURLDATA">
+    <Key>
+      <PropertyRef Name="PK_Shorturl" />
+    </Key>
+    <Property Name="PK_Shorturl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ipv4" Type="nvarchar(max)" />
+    <Property Name="Ipv6" Type="nvarchar(max)" />
+    <Property Name="ip_num" Type="bigint" />
+    <Property Name="Browser" Type="nvarchar" MaxLength="50" />
+    <Property Name="Browser_version" Type="nvarchar" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Region" Type="nvarchar" MaxLength="50" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PostalCode" Type="nvarchar(max)" />
+    <Property Name="City_Latitude" Type="nvarchar(max)" />
+    <Property Name="City_Longitude" Type="nvarchar(max)" />
+    <Property Name="Latitude" Type="nvarchar(max)" />
+    <Property Name="Longitude" Type="nvarchar(max)" />
+    <Property Name="MetroCode" Type="nvarchar(max)" />
+    <Property Name="Req_url" Type="nvarchar(max)" />
+    <Property Name="UserAgent" Type="nvarchar(max)" />
+    <Property Name="Hostname" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeviceName" Type="nvarchar(max)" />
+    <Property Name="DeviceBrand" Type="nvarchar(max)" />
+    <Property Name="OS_Name" Type="nvarchar(max)" />
+    <Property Name="OS_Version" Type="nvarchar(max)" />
+    <Property Name="IsMobileDevice" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="FK_Uid" Type="int" />
+    <Property Name="FK_RID" Type="int" />
+    <Property Name="FK_ClientID" Type="int" />
+    <Property Name="FK_City_Master_id" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tmp_rownum_update">
+    <Key>
+      <PropertyRef Name="PK_RowUpdate_ID" />
+    </Key>
+    <Property Name="PK_RowUpdate_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="row_update" Type="bigint" />
+  </EntityType>
+  <EntityType Name="UIDDATA">
+    <Key>
+      <PropertyRef Name="PK_Uid" />
+    </Key>
+    <Property Name="PK_Uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_RID" Type="int" />
+    <Property Name="FK_ClientID" Type="int" />
+    <Property Name="ReferenceNumber" Type="nvarchar(max)" />
+    <Property Name="Longurl" Type="nvarchar(max)" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UniqueNumber" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="FK_Batchid" Type="int" />
+  </EntityType>
+  <Association Name="FK_RIDDATA_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="RIDDATA" Type="Self.RIDDATA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="PK_ClientID" />
+      </Principal>
+      <Dependent Role="RIDDATA">
+        <PropertyRef Name="FK_ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHORTURLDATA_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="SHORTURLDATA" Type="Self.SHORTURLDATA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="PK_ClientID" />
+      </Principal>
+      <Dependent Role="SHORTURLDATA">
+        <PropertyRef Name="FK_ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHORTURLDATA_RIDDATA">
+    <End Role="RIDDATA" Type="Self.RIDDATA" Multiplicity="0..1" />
+    <End Role="SHORTURLDATA" Type="Self.SHORTURLDATA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RIDDATA">
+        <PropertyRef Name="PK_Rid" />
+      </Principal>
+      <Dependent Role="SHORTURLDATA">
+        <PropertyRef Name="FK_RID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHORTURLDATA_SHORTURLDATA">
+    <End Role="SHORTURLDATA" Type="Self.SHORTURLDATA" Multiplicity="1" />
+    <End Role="SHORTURLDATA1" Type="Self.SHORTURLDATA" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SHORTURLDATA">
+        <PropertyRef Name="PK_Shorturl" />
+      </Principal>
+      <Dependent Role="SHORTURLDATA1">
+        <PropertyRef Name="PK_Shorturl" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SHORTURLDATA_UIDDATA">
+    <End Role="UIDDATA" Type="Self.UIDDATA" Multiplicity="0..1" />
+    <End Role="SHORTURLDATA" Type="Self.SHORTURLDATA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UIDDATA">
+        <PropertyRef Name="PK_Uid" />
+      </Principal>
+      <Dependent Role="SHORTURLDATA">
+        <PropertyRef Name="FK_Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UIDDATA_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="UIDDATA" Type="Self.UIDDATA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="PK_ClientID" />
+      </Principal>
+      <Dependent Role="UIDDATA">
+        <PropertyRef Name="FK_ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UIDDATA_RIDDATA">
+    <End Role="RIDDATA" Type="Self.RIDDATA" Multiplicity="0..1" />
+    <End Role="UIDDATA" Type="Self.UIDDATA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RIDDATA">
+        <PropertyRef Name="PK_Rid" />
+      </Principal>
+      <Dependent Role="UIDDATA">
+        <PropertyRef Name="FK_RID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UIDDATA_UIDDATA">
+    <End Role="UIDDATA" Type="Self.UIDDATA" Multiplicity="1" />
+    <End Role="UIDDATA1" Type="Self.UIDDATA" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UIDDATA">
+        <PropertyRef Name="PK_Uid" />
+      </Principal>
+      <Dependent Role="UIDDATA1">
+        <PropertyRef Name="PK_Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UIDDATA_UIDDATA1">
+    <End Role="UIDDATA" Type="Self.UIDDATA" Multiplicity="1" />
+    <End Role="UIDDATA1" Type="Self.UIDDATA" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UIDDATA">
+        <PropertyRef Name="PK_Uid" />
+      </Principal>
+      <Dependent Role="UIDDATA1">
+        <PropertyRef Name="PK_Uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="InsertintoUIDRID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="typediff" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="uidorrid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertRIDData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CampaignName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="referencenumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="pwd" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="clientid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertSHORTURLData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ipv4" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ipv6" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="browser" Type="nvarchar" Mode="In" />
+    <Parameter Name="browser_version" Type="nvarchar" Mode="In" />
+    <Parameter Name="latitude" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="longitude" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="ipnum" Type="nvarchar" Mode="In" />
+    <Parameter Name="req_url" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="useragent" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="hostname" Type="nvarchar" Mode="In" />
+    <Parameter Name="IsMobiledevice" Type="nvarchar" Mode="In" />
+    <Parameter Name="fk_uid" Type="int" Mode="In" />
+    <Parameter Name="fk_rid" Type="int" Mode="In" />
+    <Parameter Name="FK_clientid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="InsertUIDData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fk_rid" Type="int" Mode="In" />
+    <Parameter Name="fk_clientid" Type="int" Mode="In" />
+    <Parameter Name="referencenumber" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="longurl" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="mobilenumber" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="IPAddressToInteger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="bigint">
+    <Parameter Name="ip" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spGetALLCOUNTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FilterBy" Type="int" Mode="In" />
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="spGetALLCOUNTS1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DateFrom" Type="datetime" Mode="In" />
+    <Parameter Name="DateTo" Type="datetime" Mode="In" />
+    <Parameter Name="rid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetCampaignSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rid" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="spGetDashBoardSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FkClientId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetDashBoardSummary1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FkClientId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="String" Type="nvarchar" Mode="In" />
+    <Parameter Name="Delimiter" Type="nchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Id" Type="bigint" />
+          <Property Name="Data" Type="nvarchar" MaxLength="4000" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <EntityContainer Name="shortenURLModelStoreContainer">
+    <EntitySet Name="BatchUploadData" EntityType="Self.BatchUploadData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CountryData" EntityType="Self.CountryData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="freeGeoipData" EntityType="Self.freeGeoipData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Locations_Data" EntityType="Self.Locations_Data" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginHistory" EntityType="Self.LoginHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Master_Location" EntityType="Self.Master_Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RIDDATA" EntityType="Self.RIDDATA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SHORTURLDATA" EntityType="Self.SHORTURLDATA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tmp_rownum_update" EntityType="Self.tmp_rownum_update" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UIDDATA" EntityType="Self.UIDDATA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_RIDDATA_Client" Association="Self.FK_RIDDATA_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="RIDDATA" EntitySet="RIDDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHORTURLDATA_Client" Association="Self.FK_SHORTURLDATA_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="SHORTURLDATA" EntitySet="SHORTURLDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHORTURLDATA_RIDDATA" Association="Self.FK_SHORTURLDATA_RIDDATA">
+      <End Role="RIDDATA" EntitySet="RIDDATA" />
+      <End Role="SHORTURLDATA" EntitySet="SHORTURLDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHORTURLDATA_SHORTURLDATA" Association="Self.FK_SHORTURLDATA_SHORTURLDATA">
+      <End Role="SHORTURLDATA" EntitySet="SHORTURLDATA" />
+      <End Role="SHORTURLDATA1" EntitySet="SHORTURLDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SHORTURLDATA_UIDDATA" Association="Self.FK_SHORTURLDATA_UIDDATA">
+      <End Role="UIDDATA" EntitySet="UIDDATA" />
+      <End Role="SHORTURLDATA" EntitySet="SHORTURLDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UIDDATA_Client" Association="Self.FK_UIDDATA_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="UIDDATA" EntitySet="UIDDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UIDDATA_RIDDATA" Association="Self.FK_UIDDATA_RIDDATA">
+      <End Role="RIDDATA" EntitySet="RIDDATA" />
+      <End Role="UIDDATA" EntitySet="UIDDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UIDDATA_UIDDATA" Association="Self.FK_UIDDATA_UIDDATA">
+      <End Role="UIDDATA" EntitySet="UIDDATA" />
+      <End Role="UIDDATA1" EntitySet="UIDDATA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UIDDATA_UIDDATA1" Association="Self.FK_UIDDATA_UIDDATA1">
+      <End Role="UIDDATA" EntitySet="UIDDATA" />
+      <End Role="UIDDATA1" EntitySet="UIDDATA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

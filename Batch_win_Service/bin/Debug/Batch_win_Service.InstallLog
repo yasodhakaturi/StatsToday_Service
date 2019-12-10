@@ -1,0 +1,39 @@
+﻿Installing assembly 'c:\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.InstallLog
+   assemblypath = c:\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe
+Installing service Batch_win_Service...
+Service Batch_win_Service has been successfully installed.
+Creating EventLog source Batch_win_Service in log Application...
+Committing assembly 'c:\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = c:\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.InstallLog
+   assemblypath = c:\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe
+Installing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe
+Installing service Batch_win_Service...
+Creating EventLog source Batch_win_Service in log Application...
+Rolling back assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe
+Restoring event log to previous state for source Batch_win_Service.
+Installing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe
+Installing service Batch_win_Service...
+Service Batch_win_Service has been successfully installed.
+Creating EventLog source Batch_win_Service in log Application...
+Committing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\Windows Service\Batch_win_Service\Batch_win_Service\bin\Debug\Batch_win_Service.exe

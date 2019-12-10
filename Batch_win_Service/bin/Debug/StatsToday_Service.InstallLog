@@ -1,0 +1,52 @@
+﻿Installing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+Installing service MySqlStatsToday_Service...
+Service MySqlStatsToday_Service has been successfully installed.
+Creating EventLog source MySqlStatsToday_Service in log Application...
+Committing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+Installing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+Installing service MySqlStatsToday_Service...
+Creating EventLog source MySqlStatsToday_Service in log Application...
+Rolling back assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+Restoring event log to previous state for source MySqlStatsToday_Service.
+Installing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+Installing service MySqlStatsToday_Service...
+Service MySqlStatsToday_Service has been successfully installed.
+Creating EventLog source MySqlStatsToday_Service in log Application...
+Committing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+Installing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+Installing service MySqlStatsToday_Service...
+Service MySqlStatsToday_Service has been successfully installed.
+Creating EventLog source MySqlStatsToday_Service in log Application...
+Committing assembly 'C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.InstallLog
+   assemblypath = C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe

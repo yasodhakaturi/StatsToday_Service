@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="shortenurlModelStoreContainer" CdmEntityContainer="shortenurlEntities">
+    <EntitySetMapping Name="batchuploaddatas">
+      <EntityTypeMapping TypeName="shortenurlModel.batchuploaddata">
+        <MappingFragment StoreEntitySet="batchuploaddata">
+          <ScalarProperty Name="PK_Batchid" ColumnName="PK_Batchid" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="Longurl" ColumnName="Longurl" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="BatchName" ColumnName="BatchName" />
+          <ScalarProperty Name="BatchCount" ColumnName="BatchCount" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="campaignhookurls">
+      <EntityTypeMapping TypeName="shortenurlModel.campaignhookurl">
+        <MappingFragment StoreEntitySet="campaignhookurl">
+          <ScalarProperty Name="PK_HookID" ColumnName="PK_HookID" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="HookURL" ColumnName="HookURL" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="city_blocks_ipv4_geolite2">
+      <EntityTypeMapping TypeName="shortenurlModel.city_blocks_ipv4_geolite2">
+        <MappingFragment StoreEntitySet="city_blocks_ipv4_geolite2">
+          <ScalarProperty Name="PK_City_ID_IPV4" ColumnName="PK_City_ID_IPV4" />
+          <ScalarProperty Name="network" ColumnName="network" />
+          <ScalarProperty Name="Start_IPv4_address" ColumnName="Start_IPv4_address" />
+          <ScalarProperty Name="End_IPv4_address" ColumnName="End_IPv4_address" />
+          <ScalarProperty Name="Start_IP_num" ColumnName="Start_IP_num" />
+          <ScalarProperty Name="End_IP_num" ColumnName="End_IP_num" />
+          <ScalarProperty Name="geoname_id" ColumnName="geoname_id" />
+          <ScalarProperty Name="registered_country_geoname_id" ColumnName="registered_country_geoname_id" />
+          <ScalarProperty Name="represented_country_geoname_id" ColumnName="represented_country_geoname_id" />
+          <ScalarProperty Name="is_anonymous_proxy" ColumnName="is_anonymous_proxy" />
+          <ScalarProperty Name="is_satellite_provider" ColumnName="is_satellite_provider" />
+          <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="accuracy_radius" ColumnName="accuracy_radius" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="shortenurlModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="PK_ClientID" ColumnName="PK_ClientID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+          <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cookietables">
+      <EntityTypeMapping TypeName="shortenurlModel.cookietable">
+        <MappingFragment StoreEntitySet="cookietable">
+          <ScalarProperty Name="PK_CookieId" ColumnName="PK_CookieId" />
+          <ScalarProperty Name="CookieValue" ColumnName="CookieValue" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="FK_ShorturlId" ColumnName="FK_ShorturlId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="errorlogs">
+      <EntityTypeMapping TypeName="shortenurlModel.errorlog">
+        <MappingFragment StoreEntitySet="errorlog">
+          <ScalarProperty Name="PKErrorLogId" ColumnName="PKErrorLogId" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="freegeoipdatas">
+      <EntityTypeMapping TypeName="shortenurlModel.freegeoipdata">
+        <MappingFragment StoreEntitySet="freegeoipdata">
+          <ScalarProperty Name="PK_freeGeoip_id" ColumnName="PK_freeGeoip_id" />
+          <ScalarProperty Name="Ipv4" ColumnName="Ipv4" />
+          <ScalarProperty Name="ip_num" ColumnName="ip_num" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="MetroCode" ColumnName="MetroCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hashidlists">
+      <EntityTypeMapping TypeName="shortenurlModel.hashidlist">
+        <MappingFragment StoreEntitySet="hashidlist">
+          <ScalarProperty Name="PK_Hash_ID" ColumnName="PK_Hash_ID" />
+          <ScalarProperty Name="HashID" ColumnName="HashID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hitnotifies">
+      <EntityTypeMapping TypeName="shortenurlModel.hitnotify">
+        <MappingFragment StoreEntitySet="hitnotify">
+          <ScalarProperty Name="PK_HitNotifi" ColumnName="PK_HitNotifi" />
+          <ScalarProperty Name="NotifyCount" ColumnName="NotifyCount" />
+          <ScalarProperty Name="AckFailureTime" ColumnName="AckFailureTime" />
+          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="FK_HookID" ColumnName="FK_HookID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="locations_data">
+      <EntityTypeMapping TypeName="shortenurlModel.locations_data">
+        <MappingFragment StoreEntitySet="locations_data">
+          <ScalarProperty Name="PK_LOC_ID" ColumnName="PK_LOC_ID" />
+          <ScalarProperty Name="locId" ColumnName="locId" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="region" ColumnName="region" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="longitude" ColumnName="longitude" />
+          <ScalarProperty Name="metroCode" ColumnName="metroCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loginhistories">
+      <EntityTypeMapping TypeName="shortenurlModel.loginhistory">
+        <MappingFragment StoreEntitySet="loginhistory">
+          <ScalarProperty Name="PKLoginHistoryId" ColumnName="PKLoginHistoryId" />
+          <ScalarProperty Name="FKPersonId" ColumnName="FKPersonId" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="master_location">
+      <EntityTypeMapping TypeName="shortenurlModel.master_location">
+        <MappingFragment StoreEntitySet="master_location">
+          <ScalarProperty Name="PK_MASTERID" ColumnName="PK_MASTERID" />
+          <ScalarProperty Name="Start_IPv4_address" ColumnName="Start_IPv4_address" />
+          <ScalarProperty Name="End_IPv4_address" ColumnName="End_IPv4_address" />
+          <ScalarProperty Name="startIpNum" ColumnName="startIpNum" />
+          <ScalarProperty Name="endIpNum" ColumnName="endIpNum" />
+          <ScalarProperty Name="locId" ColumnName="locId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messagelinks">
+      <EntityTypeMapping TypeName="shortenurlModel.messagelink">
+        <MappingFragment StoreEntitySet="messagelinks">
+          <ScalarProperty Name="PK_LinkID" ColumnName="PK_LinkID" />
+          <ScalarProperty Name="ShortUrlId" ColumnName="ShortUrlId" />
+          <ScalarProperty Name="LinkTag" ColumnName="LinkTag" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="riddatas">
+      <EntityTypeMapping TypeName="shortenurlModel.riddata">
+        <MappingFragment StoreEntitySet="riddata">
+          <ScalarProperty Name="PK_Rid" ColumnName="PK_Rid" />
+          <ScalarProperty Name="CampaignName" ColumnName="CampaignName" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="FK_ClientId" ColumnName="FK_ClientId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shorturldatas">
+      <EntityTypeMapping TypeName="shortenurlModel.shorturldata">
+        <MappingFragment StoreEntitySet="shorturldata">
+          <ScalarProperty Name="PK_Shorturl" ColumnName="PK_Shorturl" />
+          <ScalarProperty Name="Ipv4" ColumnName="Ipv4" />
+          <ScalarProperty Name="Ipv6" ColumnName="Ipv6" />
+          <ScalarProperty Name="ip_num" ColumnName="ip_num" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="Browser_version" ColumnName="Browser_version" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="City_Latitude" ColumnName="City_Latitude" />
+          <ScalarProperty Name="City_Longitude" ColumnName="City_Longitude" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="MetroCode" ColumnName="MetroCode" />
+          <ScalarProperty Name="Req_url" ColumnName="Req_url" />
+          <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+          <ScalarProperty Name="Hostname" ColumnName="Hostname" />
+          <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+          <ScalarProperty Name="DeviceBrand" ColumnName="DeviceBrand" />
+          <ScalarProperty Name="OS_Name" ColumnName="OS_Name" />
+          <ScalarProperty Name="OS_Version" ColumnName="OS_Version" />
+          <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FK_Uid" ColumnName="FK_Uid" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="FK_City_Master_id" ColumnName="FK_City_Master_id" />
+          <ScalarProperty Name="ACK" ColumnName="ACK" />
+          <ScalarProperty Name="ACKDATE" ColumnName="ACKDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="shortenurlModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tmp_rownum_update">
+      <EntityTypeMapping TypeName="shortenurlModel.tmp_rownum_update">
+        <MappingFragment StoreEntitySet="tmp_rownum_update">
+          <ScalarProperty Name="PK_RowUpdate_ID" ColumnName="PK_RowUpdate_ID" />
+          <ScalarProperty Name="row_update" ColumnName="row_update" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="uiddatas">
+      <EntityTypeMapping TypeName="shortenurlModel.uiddata">
+        <MappingFragment StoreEntitySet="uiddata">
+          <ScalarProperty Name="PK_Uid" ColumnName="PK_Uid" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="ReferenceNumber" ColumnName="ReferenceNumber" />
+          <ScalarProperty Name="LongurlorMessage" ColumnName="LongurlorMessage" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UniqueNumber" ColumnName="UniqueNumber" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="FK_Batchid" ColumnName="FK_Batchid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="city_locations_geolite2">
+      <EntityTypeMapping TypeName="shortenurlModel.city_locations_geolite2">
+        <MappingFragment StoreEntitySet="city_locations_geolite2">
+          <ScalarProperty Name="PK_City_Location_ID" ColumnName="PK_City_Location_ID" />
+          <ScalarProperty Name="geoname_id" ColumnName="geoname_id" />
+          <ScalarProperty Name="locale_code" ColumnName="locale_code" />
+          <ScalarProperty Name="continent_code" ColumnName="continent_code" />
+          <ScalarProperty Name="continent_name" ColumnName="continent_name" />
+          <ScalarProperty Name="country_iso_code" ColumnName="country_iso_code" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="subdivision_1_iso_code" ColumnName="subdivision_1_iso_code" />
+          <ScalarProperty Name="subdivision_1_name" ColumnName="subdivision_1_name" />
+          <ScalarProperty Name="subdivision_2_iso_code" ColumnName="subdivision_2_iso_code" />
+          <ScalarProperty Name="subdivision_2_name" ColumnName="subdivision_2_name" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+          <ScalarProperty Name="metro_code" ColumnName="metro_code" />
+          <ScalarProperty Name="time_zone" ColumnName="time_zone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertRIDData" FunctionName="shortenurlModel.Store.InsertRIDData" />
+    <FunctionImportMapping FunctionImportName="InsertSHORTURLData" FunctionName="shortenurlModel.Store.InsertSHORTURLData" />
+    <FunctionImportMapping FunctionImportName="InsertUIDData" FunctionName="shortenurlModel.Store.InsertUIDData" />
+    <FunctionImportMapping FunctionImportName="spGetALLCOUNTS1" FunctionName="shortenurlModel.Store.spGetALLCOUNTS1" />
+    <EntitySetMapping Name="activity_counts">
+      <EntityTypeMapping TypeName="shortenurlModel.activity_counts">
+        <MappingFragment StoreEntitySet="activity_counts">
+          <ScalarProperty Name="FK_ClientId" ColumnName="FK_ClientId" />
+          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
+          <ScalarProperty Name="DaysCount" ColumnName="DaysCount" />
+          <ScalarProperty Name="NoVisitsPercent_Month" ColumnName="NoVisitsPercent_Month" />
+          <ScalarProperty Name="NoVisitsTotal_Month" ColumnName="NoVisitsTotal_Month" />
+          <ScalarProperty Name="RevisitsPercent_Month" ColumnName="RevisitsPercent_Month" />
+          <ScalarProperty Name="RevisitsTotal_Month" ColumnName="RevisitsTotal_Month" />
+          <ScalarProperty Name="VisitsPercent_Month" ColumnName="VisitsPercent_Month" />
+          <ScalarProperty Name="VisitsTotal_Month" ColumnName="VisitsTotal_Month" />
+          <ScalarProperty Name="UrlPercent_Month" ColumnName="UrlPercent_Month" />
+          <ScalarProperty Name="UrlTotal_Month" ColumnName="UrlTotal_Month" />
+          <ScalarProperty Name="NoVisitsPercent_Week" ColumnName="NoVisitsPercent_Week" />
+          <ScalarProperty Name="NoVisitsTotal_Week" ColumnName="NoVisitsTotal_Week" />
+          <ScalarProperty Name="RevisitsPercent_Week" ColumnName="RevisitsPercent_Week" />
+          <ScalarProperty Name="RevisitsTotal_Week" ColumnName="RevisitsTotal_Week" />
+          <ScalarProperty Name="VisitsPercent_Week" ColumnName="VisitsPercent_Week" />
+          <ScalarProperty Name="VisitsTotal_Week" ColumnName="VisitsTotal_Week" />
+          <ScalarProperty Name="UrlPercent_Week" ColumnName="UrlPercent_Week" />
+          <ScalarProperty Name="UrlTotal_Week" ColumnName="UrlTotal_Week" />
+          <ScalarProperty Name="NoVisitsPercent_Today" ColumnName="NoVisitsPercent_Today" />
+          <ScalarProperty Name="NoVisitsTotal_Today" ColumnName="NoVisitsTotal_Today" />
+          <ScalarProperty Name="RevisitsPercent_Today" ColumnName="RevisitsPercent_Today" />
+          <ScalarProperty Name="RevisitsTotal_Today" ColumnName="RevisitsTotal_Today" />
+          <ScalarProperty Name="VisitsPercent_Today" ColumnName="VisitsPercent_Today" />
+          <ScalarProperty Name="VisitsTotal_Today" ColumnName="VisitsTotal_Today" />
+          <ScalarProperty Name="UrlPercent_Today" ColumnName="UrlPercent_Today" />
+          <ScalarProperty Name="UrlTotal_Today" ColumnName="UrlTotal_Today" />
+          <ScalarProperty Name="PK_Activity" ColumnName="PK_Activity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shorturlclickreferences">
+      <EntityTypeMapping TypeName="shortenurlModel.shorturlclickreference">
+        <MappingFragment StoreEntitySet="shorturlclickreference">
+          <ScalarProperty Name="Ref_UsersID" ColumnName="Ref_UsersID" />
+          <ScalarProperty Name="Ref_ShorturlClickID" ColumnName="Ref_ShorturlClickID" />
+          <ScalarProperty Name="PK_ClickID" ColumnName="PK_ClickID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stat_counts">
+      <EntityTypeMapping TypeName="shortenurlModel.stat_counts">
+        <MappingFragment StoreEntitySet="stat_counts">
+          <ScalarProperty Name="NoVisitsTotal_Yesterday" ColumnName="NoVisitsTotal_Yesterday" />
+          <ScalarProperty Name="RevisitsTotal_Yesterday" ColumnName="RevisitsTotal_Yesterday" />
+          <ScalarProperty Name="UniqueVisits" ColumnName="UniqueVisits" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
+          <ScalarProperty Name="DaysCount_Month" ColumnName="DaysCount_Month" />
+          <ScalarProperty Name="DaysCount_Week" ColumnName="DaysCount_Week" />
+          <ScalarProperty Name="NoVisitsPercent_Month" ColumnName="NoVisitsPercent_Month" />
+          <ScalarProperty Name="NoVisitsTotal_Month" ColumnName="NoVisitsTotal_Month" />
+          <ScalarProperty Name="RevisitsPercent_Month" ColumnName="RevisitsPercent_Month" />
+          <ScalarProperty Name="RevisitsTotal_Month" ColumnName="RevisitsTotal_Month" />
+          <ScalarProperty Name="VisitsPercent_Month" ColumnName="VisitsPercent_Month" />
+          <ScalarProperty Name="VisitsTotal_Month" ColumnName="VisitsTotal_Month" />
+          <ScalarProperty Name="UrlTotalPercent_Month" ColumnName="UrlTotalPercent_Month" />
+          <ScalarProperty Name="UrlTotal_Month" ColumnName="UrlTotal_Month" />
+          <ScalarProperty Name="NoVisitsPercent_Week" ColumnName="NoVisitsPercent_Week" />
+          <ScalarProperty Name="NoVisitsTotal_Week" ColumnName="NoVisitsTotal_Week" />
+          <ScalarProperty Name="RevisitsPercent_Week" ColumnName="RevisitsPercent_Week" />
+          <ScalarProperty Name="RevisitsTotal_Week" ColumnName="RevisitsTotal_Week" />
+          <ScalarProperty Name="VisitsPercent_Week" ColumnName="VisitsPercent_Week" />
+          <ScalarProperty Name="VisitsTotal_Week" ColumnName="VisitsTotal_Week" />
+          <ScalarProperty Name="UrlPercent_Week" ColumnName="UrlPercent_Week" />
+          <ScalarProperty Name="UrlTotal_Week" ColumnName="UrlTotal_Week" />
+          <ScalarProperty Name="NoVisitsPercent_Today" ColumnName="NoVisitsPercent_Today" />
+          <ScalarProperty Name="NoVisitsTotal_Today" ColumnName="NoVisitsTotal_Today" />
+          <ScalarProperty Name="RevisitsPercent_Today" ColumnName="RevisitsPercent_Today" />
+          <ScalarProperty Name="RevisitsTotal_Today" ColumnName="RevisitsTotal_Today" />
+          <ScalarProperty Name="VisitsPercent_Today" ColumnName="VisitsPercent_Today" />
+          <ScalarProperty Name="VisitsTotal_Today" ColumnName="VisitsTotal_Today" />
+          <ScalarProperty Name="UrlPercent_Today" ColumnName="UrlPercent_Today" />
+          <ScalarProperty Name="UrlTotal_Today" ColumnName="UrlTotal_Today" />
+          <ScalarProperty Name="CampaignsMonth" ColumnName="CampaignsMonth" />
+          <ScalarProperty Name="CampaignsLast7days" ColumnName="CampaignsLast7days" />
+          <ScalarProperty Name="TotalCamapigns" ColumnName="TotalCamapigns" />
+          <ScalarProperty Name="VisitsLast7days" ColumnName="VisitsLast7days" />
+          <ScalarProperty Name="UniqueVisitsLast7day" ColumnName="UniqueVisitsLast7day" />
+          <ScalarProperty Name="UniqueVisitsYesterday" ColumnName="UniqueVisitsYesterday" />
+          <ScalarProperty Name="VisitsYesterday" ColumnName="VisitsYesterday" />
+          <ScalarProperty Name="UniqueVisitsToday" ColumnName="UniqueVisitsToday" />
+          <ScalarProperty Name="VisitsToday" ColumnName="VisitsToday" />
+          <ScalarProperty Name="TotalVisits" ColumnName="TotalVisits" />
+          <ScalarProperty Name="UsersLast7days" ColumnName="UsersLast7days" />
+          <ScalarProperty Name="UniqueUsersLast7days" ColumnName="UniqueUsersLast7days" />
+          <ScalarProperty Name="UsersYesterday" ColumnName="UsersYesterday" />
+          <ScalarProperty Name="UniqueUsersYesterday" ColumnName="UniqueUsersYesterday" />
+          <ScalarProperty Name="UsersToday" ColumnName="UsersToday" />
+          <ScalarProperty Name="UniqueUsersToday" ColumnName="UniqueUsersToday" />
+          <ScalarProperty Name="UniqueUsers" ColumnName="UniqueUsers" />
+          <ScalarProperty Name="TotalUsers" ColumnName="TotalUsers" />
+          <ScalarProperty Name="PK_Stat" ColumnName="PK_Stat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stats_counts_today">
+      <EntityTypeMapping TypeName="shortenurlModel.stats_counts_today">
+        <MappingFragment StoreEntitySet="stats_counts_today">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="UniqueVisits_Today" ColumnName="UniqueVisits_Today" />
+          <ScalarProperty Name="UniqueUsers_Today" ColumnName="UniqueUsers_Today" />
+          <ScalarProperty Name="NoVisits_Today" ColumnName="NoVisits_Today" />
+          <ScalarProperty Name="Revisitsl_Today" ColumnName="Revisitsl_Today" />
+          <ScalarProperty Name="Visits_Today" ColumnName="Visits_Today" />
+          <ScalarProperty Name="Users_Today" ColumnName="Users_Today" />
+          <ScalarProperty Name="PKStatsToday_Count" ColumnName="PKStatsToday_Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
