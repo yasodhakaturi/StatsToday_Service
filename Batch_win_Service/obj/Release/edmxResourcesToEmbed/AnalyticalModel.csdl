@@ -1,38 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="shortenurlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="activity_counts">
-    <Key>
-      <PropertyRef Name="PK_Activity" />
-    </Key>
-    <Property Name="PK_Activity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="UrlTotal_Today" Type="Int32" />
-    <Property Name="UrlPercent_Today" Type="Int32" />
-    <Property Name="VisitsTotal_Today" Type="Int32" />
-    <Property Name="VisitsPercent_Today" Type="Int32" />
-    <Property Name="RevisitsTotal_Today" Type="Int32" />
-    <Property Name="RevisitsPercent_Today" Type="Int32" />
-    <Property Name="NoVisitsTotal_Today" Type="Int32" />
-    <Property Name="NoVisitsPercent_Today" Type="Int32" />
-    <Property Name="UrlTotal_Week" Type="Int32" />
-    <Property Name="UrlPercent_Week" Type="Int32" />
-    <Property Name="VisitsTotal_Week" Type="Int32" />
-    <Property Name="VisitsPercent_Week" Type="Int32" />
-    <Property Name="RevisitsTotal_Week" Type="Int32" />
-    <Property Name="RevisitsPercent_Week" Type="Int32" />
-    <Property Name="NoVisitsTotal_Week" Type="Int32" />
-    <Property Name="NoVisitsPercent_Week" Type="Int32" />
-    <Property Name="UrlTotal_Month" Type="Int32" />
-    <Property Name="UrlPercent_Month" Type="Int32" />
-    <Property Name="VisitsTotal_Month" Type="Int32" />
-    <Property Name="VisitsPercent_Month" Type="Int32" />
-    <Property Name="RevisitsTotal_Month" Type="Int32" />
-    <Property Name="RevisitsPercent_Month" Type="Int32" />
-    <Property Name="NoVisitsTotal_Month" Type="Int32" />
-    <Property Name="NoVisitsPercent_Month" Type="Int32" />
-    <Property Name="DaysCount" Type="Int32" />
-    <Property Name="FK_Rid" Type="Int32" />
-    <Property Name="FK_ClientId" Type="Int32" />
-  </EntityType>
   <EntityType Name="batchuploaddata">
     <Key>
       <PropertyRef Name="PK_Batchid" />
@@ -100,6 +67,7 @@
     <NavigationProperty Name="riddatas" Relationship="Self.FK_RIDDATA_Client" FromRole="client" ToRole="riddata" />
     <NavigationProperty Name="shorturldatas" Relationship="Self.FK_SHORTURLDATA_Client" FromRole="client" ToRole="shorturldata" />
     <NavigationProperty Name="uiddatas" Relationship="Self.FK_UIDDATA_Client" FromRole="client" ToRole="uiddata" />
+    <NavigationProperty Name="stats_counts_today" Relationship="shortenurlModel.clientid" FromRole="client" ToRole="stats_counts_today" />
   </EntityType>
   <EntityType Name="cookietable">
     <Key>
@@ -216,6 +184,7 @@
     <NavigationProperty Name="client" Relationship="Self.FK_RIDDATA_Client" FromRole="riddata" ToRole="client" />
     <NavigationProperty Name="shorturldatas" Relationship="Self.FK_SHORTURLDATA_RIDDATA" FromRole="riddata" ToRole="shorturldata" />
     <NavigationProperty Name="uiddatas" Relationship="Self.FK_UIDDATA_RIDDATA" FromRole="riddata" ToRole="uiddata" />
+    <NavigationProperty Name="stats_counts_today" Relationship="shortenurlModel.fkrid" FromRole="riddata" ToRole="stats_counts_today" />
   </EntityType>
   <EntityType Name="shorturldata">
     <Key>
@@ -256,59 +225,6 @@
     <NavigationProperty Name="cookietables" Relationship="Self.FK_CookieTable_SHORTURLDATA" FromRole="shorturldata" ToRole="cookietable" />
     <NavigationProperty Name="riddata" Relationship="Self.FK_SHORTURLDATA_RIDDATA" FromRole="shorturldata" ToRole="riddata" />
     <NavigationProperty Name="uiddata" Relationship="Self.FK_SHORTURLDATA_UIDDATA" FromRole="shorturldata" ToRole="uiddata" />
-  </EntityType>
-  <EntityType Name="stat_counts">
-    <Key>
-      <PropertyRef Name="PK_Stat" />
-    </Key>
-    <Property Name="PK_Stat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="TotalUsers" Type="Int32" />
-    <Property Name="UniqueUsers" Type="Int32" />
-    <Property Name="UniqueUsersToday" Type="Int32" />
-    <Property Name="UsersToday" Type="Int32" />
-    <Property Name="UniqueUsersYesterday" Type="Int32" />
-    <Property Name="UsersYesterday" Type="Int32" />
-    <Property Name="UniqueUsersLast7days" Type="Int32" />
-    <Property Name="UsersLast7days" Type="Int32" />
-    <Property Name="TotalVisits" Type="Int32" />
-    <Property Name="VisitsToday" Type="Int32" />
-    <Property Name="UniqueVisitsToday" Type="Int32" />
-    <Property Name="VisitsYesterday" Type="Int32" />
-    <Property Name="UniqueVisitsYesterday" Type="Int32" />
-    <Property Name="UniqueVisitsLast7day" Type="Int32" />
-    <Property Name="VisitsLast7days" Type="Int32" />
-    <Property Name="TotalCamapigns" Type="Int32" />
-    <Property Name="CampaignsLast7days" Type="Int32" />
-    <Property Name="CampaignsMonth" Type="Int32" />
-    <Property Name="UrlTotal_Today" Type="Int32" />
-    <Property Name="UrlPercent_Today" Type="Double" />
-    <Property Name="VisitsTotal_Today" Type="Int32" />
-    <Property Name="VisitsPercent_Today" Type="Double" />
-    <Property Name="RevisitsTotal_Today" Type="Int32" />
-    <Property Name="RevisitsPercent_Today" Type="Double" />
-    <Property Name="NoVisitsTotal_Today" Type="Int32" />
-    <Property Name="NoVisitsPercent_Today" Type="Double" />
-    <Property Name="UrlTotal_Week" Type="Int32" />
-    <Property Name="UrlPercent_Week" Type="Double" />
-    <Property Name="VisitsTotal_Week" Type="Int32" />
-    <Property Name="VisitsPercent_Week" Type="Double" />
-    <Property Name="RevisitsTotal_Week" Type="Int32" />
-    <Property Name="RevisitsPercent_Week" Type="Double" />
-    <Property Name="NoVisitsTotal_Week" Type="Int32" />
-    <Property Name="NoVisitsPercent_Week" Type="Double" />
-    <Property Name="UrlTotal_Month" Type="Int32" />
-    <Property Name="UrlTotalPercent_Month" Type="Double" />
-    <Property Name="VisitsTotal_Month" Type="Int32" />
-    <Property Name="VisitsPercent_Month" Type="Double" />
-    <Property Name="RevisitsTotal_Month" Type="Int32" />
-    <Property Name="RevisitsPercent_Month" Type="Double" />
-    <Property Name="NoVisitsTotal_Month" Type="Int32" />
-    <Property Name="NoVisitsPercent_Month" Type="Double" />
-    <Property Name="DaysCount_Week" Type="Int32" />
-    <Property Name="DaysCount_Month" Type="Int32" />
-    <Property Name="FK_Rid" Type="Int32" />
-    <Property Name="FK_ClientID" Type="Int32" />
-    <Property Name="CreatedDate" Type="DateTime" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -463,7 +379,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="shortenurlEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="activity_counts" EntityType="Self.activity_counts" />
     <EntitySet Name="batchuploaddatas" EntityType="Self.batchuploaddata" />
     <EntitySet Name="campaignhookurls" EntityType="Self.campaignhookurl" />
     <EntitySet Name="city_blocks_ipv4_geolite2" EntityType="Self.city_blocks_ipv4_geolite2" />
@@ -479,7 +394,6 @@
     <EntitySet Name="messagelinks" EntityType="Self.messagelink" />
     <EntitySet Name="riddatas" EntityType="Self.riddata" />
     <EntitySet Name="shorturldatas" EntityType="Self.shorturldata" />
-    <EntitySet Name="stat_counts" EntityType="Self.stat_counts" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="tmp_rownum_update" EntityType="Self.tmp_rownum_update" />
     <EntitySet Name="uiddatas" EntityType="Self.uiddata" />
@@ -554,5 +468,155 @@
       <Parameter Name="DateTo" Mode="In" Type="String" />
       <Parameter Name="rid" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="activity_counts" EntityType="shortenurlModel.activity_counts" />
+    <EntitySet Name="shorturlclickreferences" EntityType="shortenurlModel.shorturlclickreference" />
+    <EntitySet Name="stat_counts" EntityType="shortenurlModel.stat_counts" />
+    <EntitySet Name="stats_counts_today" EntityType="shortenurlModel.stats_counts_today" />
+    <AssociationSet Name="clientid" Association="shortenurlModel.clientid">
+      <End Role="client" EntitySet="clients" />
+      <End Role="stats_counts_today" EntitySet="stats_counts_today" />
+    </AssociationSet>
+    <AssociationSet Name="fkrid" Association="shortenurlModel.fkrid">
+      <End Role="riddata" EntitySet="riddatas" />
+      <End Role="stats_counts_today" EntitySet="stats_counts_today" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="activity_counts">
+    <Key>
+      <PropertyRef Name="PK_Activity" />
+    </Key>
+    <Property Name="PK_Activity" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UrlTotal_Today" Type="Int32" />
+    <Property Name="UrlPercent_Today" Type="Int32" />
+    <Property Name="VisitsTotal_Today" Type="Int32" />
+    <Property Name="VisitsPercent_Today" Type="Int32" />
+    <Property Name="RevisitsTotal_Today" Type="Int32" />
+    <Property Name="RevisitsPercent_Today" Type="Int32" />
+    <Property Name="NoVisitsTotal_Today" Type="Int32" />
+    <Property Name="NoVisitsPercent_Today" Type="Int32" />
+    <Property Name="UrlTotal_Week" Type="Int32" />
+    <Property Name="UrlPercent_Week" Type="Int32" />
+    <Property Name="VisitsTotal_Week" Type="Int32" />
+    <Property Name="VisitsPercent_Week" Type="Int32" />
+    <Property Name="RevisitsTotal_Week" Type="Int32" />
+    <Property Name="RevisitsPercent_Week" Type="Int32" />
+    <Property Name="NoVisitsTotal_Week" Type="Int32" />
+    <Property Name="NoVisitsPercent_Week" Type="Int32" />
+    <Property Name="UrlTotal_Month" Type="Int32" />
+    <Property Name="UrlPercent_Month" Type="Int32" />
+    <Property Name="VisitsTotal_Month" Type="Int32" />
+    <Property Name="VisitsPercent_Month" Type="Int32" />
+    <Property Name="RevisitsTotal_Month" Type="Int32" />
+    <Property Name="RevisitsPercent_Month" Type="Int32" />
+    <Property Name="NoVisitsTotal_Month" Type="Int32" />
+    <Property Name="NoVisitsPercent_Month" Type="Int32" />
+    <Property Name="DaysCount" Type="Int32" />
+    <Property Name="FK_Rid" Type="Int32" />
+    <Property Name="FK_ClientId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="shorturlclickreference">
+    <Key>
+      <PropertyRef Name="PK_ClickID" />
+    </Key>
+    <Property Name="PK_ClickID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ref_ShorturlClickID" Type="Int32" />
+    <Property Name="Ref_UsersID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="stat_counts">
+    <Key>
+      <PropertyRef Name="PK_Stat" />
+    </Key>
+    <Property Name="PK_Stat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalUsers" Type="Int32" />
+    <Property Name="UniqueUsers" Type="Int32" />
+    <Property Name="UniqueUsersToday" Type="Int32" />
+    <Property Name="UsersToday" Type="Int32" />
+    <Property Name="UniqueUsersYesterday" Type="Int32" />
+    <Property Name="UsersYesterday" Type="Int32" />
+    <Property Name="UniqueUsersLast7days" Type="Int32" />
+    <Property Name="UsersLast7days" Type="Int32" />
+    <Property Name="TotalVisits" Type="Int32" />
+    <Property Name="VisitsToday" Type="Int32" />
+    <Property Name="UniqueVisitsToday" Type="Int32" />
+    <Property Name="VisitsYesterday" Type="Int32" />
+    <Property Name="UniqueVisitsYesterday" Type="Int32" />
+    <Property Name="UniqueVisitsLast7day" Type="Int32" />
+    <Property Name="VisitsLast7days" Type="Int32" />
+    <Property Name="TotalCamapigns" Type="Int32" />
+    <Property Name="CampaignsLast7days" Type="Int32" />
+    <Property Name="CampaignsMonth" Type="Int32" />
+    <Property Name="UrlTotal_Today" Type="Int32" />
+    <Property Name="UrlPercent_Today" Type="Double" />
+    <Property Name="VisitsTotal_Today" Type="Int32" />
+    <Property Name="VisitsPercent_Today" Type="Double" />
+    <Property Name="RevisitsTotal_Today" Type="Int32" />
+    <Property Name="RevisitsPercent_Today" Type="Double" />
+    <Property Name="NoVisitsTotal_Today" Type="Int32" />
+    <Property Name="NoVisitsPercent_Today" Type="Double" />
+    <Property Name="UrlTotal_Week" Type="Int32" />
+    <Property Name="UrlPercent_Week" Type="Double" />
+    <Property Name="VisitsTotal_Week" Type="Int32" />
+    <Property Name="VisitsPercent_Week" Type="Double" />
+    <Property Name="RevisitsTotal_Week" Type="Int32" />
+    <Property Name="RevisitsPercent_Week" Type="Double" />
+    <Property Name="NoVisitsTotal_Week" Type="Int32" />
+    <Property Name="NoVisitsPercent_Week" Type="Double" />
+    <Property Name="UrlTotal_Month" Type="Int32" />
+    <Property Name="UrlTotalPercent_Month" Type="Double" />
+    <Property Name="VisitsTotal_Month" Type="Int32" />
+    <Property Name="VisitsPercent_Month" Type="Double" />
+    <Property Name="RevisitsTotal_Month" Type="Int32" />
+    <Property Name="RevisitsPercent_Month" Type="Double" />
+    <Property Name="NoVisitsTotal_Month" Type="Int32" />
+    <Property Name="NoVisitsPercent_Month" Type="Double" />
+    <Property Name="DaysCount_Week" Type="Int32" />
+    <Property Name="DaysCount_Month" Type="Int32" />
+    <Property Name="FK_Rid" Type="Int32" />
+    <Property Name="FK_ClientID" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" />
+    <Property Name="UniqueVisits" Type="Int32" />
+    <Property Name="RevisitsTotal_Yesterday" Type="Int32" />
+    <Property Name="NoVisitsTotal_Yesterday" Type="Int32" />
+  </EntityType>
+  <EntityType Name="stats_counts_today">
+    <Key>
+      <PropertyRef Name="PKStatsToday_Count" />
+    </Key>
+    <Property Name="PKStatsToday_Count" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Users_Today" Type="Int32" />
+    <Property Name="Visits_Today" Type="Int32" />
+    <Property Name="Revisitsl_Today" Type="Int32" />
+    <Property Name="NoVisits_Today" Type="Int32" />
+    <Property Name="UniqueUsers_Today" Type="Int32" />
+    <Property Name="UniqueVisits_Today" Type="Int32" />
+    <Property Name="FK_RID" Type="Int32" />
+    <Property Name="FK_ClientID" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" />
+    <NavigationProperty Name="client" Relationship="shortenurlModel.clientid" FromRole="stats_counts_today" ToRole="client" />
+    <NavigationProperty Name="riddata" Relationship="shortenurlModel.fkrid" FromRole="stats_counts_today" ToRole="riddata" />
+  </EntityType>
+  <Association Name="clientid">
+    <End Type="shortenurlModel.client" Role="client" Multiplicity="0..1" />
+    <End Type="shortenurlModel.stats_counts_today" Role="stats_counts_today" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="PK_ClientID" />
+      </Principal>
+      <Dependent Role="stats_counts_today">
+        <PropertyRef Name="FK_ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fkrid">
+    <End Type="shortenurlModel.riddata" Role="riddata" Multiplicity="0..1" />
+    <End Type="shortenurlModel.stats_counts_today" Role="stats_counts_today" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="riddata">
+        <PropertyRef Name="PK_Rid" />
+      </Principal>
+      <Dependent Role="stats_counts_today">
+        <PropertyRef Name="FK_RID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

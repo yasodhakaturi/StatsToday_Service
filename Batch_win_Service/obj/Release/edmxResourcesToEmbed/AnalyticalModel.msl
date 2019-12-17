@@ -1,40 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="shortenurlModelStoreContainer" CdmEntityContainer="shortenurlEntities">
-    <EntitySetMapping Name="activity_counts">
-      <EntityTypeMapping TypeName="shortenurlModel.activity_counts">
-        <MappingFragment StoreEntitySet="activity_counts">
-          <ScalarProperty Name="PK_Activity" ColumnName="PK_Activity" />
-          <ScalarProperty Name="UrlTotal_Today" ColumnName="UrlTotal_Today" />
-          <ScalarProperty Name="UrlPercent_Today" ColumnName="UrlPercent_Today" />
-          <ScalarProperty Name="VisitsTotal_Today" ColumnName="VisitsTotal_Today" />
-          <ScalarProperty Name="VisitsPercent_Today" ColumnName="VisitsPercent_Today" />
-          <ScalarProperty Name="RevisitsTotal_Today" ColumnName="RevisitsTotal_Today" />
-          <ScalarProperty Name="RevisitsPercent_Today" ColumnName="RevisitsPercent_Today" />
-          <ScalarProperty Name="NoVisitsTotal_Today" ColumnName="NoVisitsTotal_Today" />
-          <ScalarProperty Name="NoVisitsPercent_Today" ColumnName="NoVisitsPercent_Today" />
-          <ScalarProperty Name="UrlTotal_Week" ColumnName="UrlTotal_Week" />
-          <ScalarProperty Name="UrlPercent_Week" ColumnName="UrlPercent_Week" />
-          <ScalarProperty Name="VisitsTotal_Week" ColumnName="VisitsTotal_Week" />
-          <ScalarProperty Name="VisitsPercent_Week" ColumnName="VisitsPercent_Week" />
-          <ScalarProperty Name="RevisitsTotal_Week" ColumnName="RevisitsTotal_Week" />
-          <ScalarProperty Name="RevisitsPercent_Week" ColumnName="RevisitsPercent_Week" />
-          <ScalarProperty Name="NoVisitsTotal_Week" ColumnName="NoVisitsTotal_Week" />
-          <ScalarProperty Name="NoVisitsPercent_Week" ColumnName="NoVisitsPercent_Week" />
-          <ScalarProperty Name="UrlTotal_Month" ColumnName="UrlTotal_Month" />
-          <ScalarProperty Name="UrlPercent_Month" ColumnName="UrlPercent_Month" />
-          <ScalarProperty Name="VisitsTotal_Month" ColumnName="VisitsTotal_Month" />
-          <ScalarProperty Name="VisitsPercent_Month" ColumnName="VisitsPercent_Month" />
-          <ScalarProperty Name="RevisitsTotal_Month" ColumnName="RevisitsTotal_Month" />
-          <ScalarProperty Name="RevisitsPercent_Month" ColumnName="RevisitsPercent_Month" />
-          <ScalarProperty Name="NoVisitsTotal_Month" ColumnName="NoVisitsTotal_Month" />
-          <ScalarProperty Name="NoVisitsPercent_Month" ColumnName="NoVisitsPercent_Month" />
-          <ScalarProperty Name="DaysCount" ColumnName="DaysCount" />
-          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
-          <ScalarProperty Name="FK_ClientId" ColumnName="FK_ClientId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="batchuploaddatas">
       <EntityTypeMapping TypeName="shortenurlModel.batchuploaddata">
         <MappingFragment StoreEntitySet="batchuploaddata">
@@ -261,60 +227,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="stat_counts">
-      <EntityTypeMapping TypeName="shortenurlModel.stat_counts">
-        <MappingFragment StoreEntitySet="stat_counts">
-          <ScalarProperty Name="PK_Stat" ColumnName="PK_Stat" />
-          <ScalarProperty Name="TotalUsers" ColumnName="TotalUsers" />
-          <ScalarProperty Name="UniqueUsers" ColumnName="UniqueUsers" />
-          <ScalarProperty Name="UniqueUsersToday" ColumnName="UniqueUsersToday" />
-          <ScalarProperty Name="UsersToday" ColumnName="UsersToday" />
-          <ScalarProperty Name="UniqueUsersYesterday" ColumnName="UniqueUsersYesterday" />
-          <ScalarProperty Name="UsersYesterday" ColumnName="UsersYesterday" />
-          <ScalarProperty Name="UniqueUsersLast7days" ColumnName="UniqueUsersLast7days" />
-          <ScalarProperty Name="UsersLast7days" ColumnName="UsersLast7days" />
-          <ScalarProperty Name="TotalVisits" ColumnName="TotalVisits" />
-          <ScalarProperty Name="VisitsToday" ColumnName="VisitsToday" />
-          <ScalarProperty Name="UniqueVisitsToday" ColumnName="UniqueVisitsToday" />
-          <ScalarProperty Name="VisitsYesterday" ColumnName="VisitsYesterday" />
-          <ScalarProperty Name="UniqueVisitsYesterday" ColumnName="UniqueVisitsYesterday" />
-          <ScalarProperty Name="UniqueVisitsLast7day" ColumnName="UniqueVisitsLast7day" />
-          <ScalarProperty Name="VisitsLast7days" ColumnName="VisitsLast7days" />
-          <ScalarProperty Name="TotalCamapigns" ColumnName="TotalCamapigns" />
-          <ScalarProperty Name="CampaignsLast7days" ColumnName="CampaignsLast7days" />
-          <ScalarProperty Name="CampaignsMonth" ColumnName="CampaignsMonth" />
-          <ScalarProperty Name="UrlTotal_Today" ColumnName="UrlTotal_Today" />
-          <ScalarProperty Name="UrlPercent_Today" ColumnName="UrlPercent_Today" />
-          <ScalarProperty Name="VisitsTotal_Today" ColumnName="VisitsTotal_Today" />
-          <ScalarProperty Name="VisitsPercent_Today" ColumnName="VisitsPercent_Today" />
-          <ScalarProperty Name="RevisitsTotal_Today" ColumnName="RevisitsTotal_Today" />
-          <ScalarProperty Name="RevisitsPercent_Today" ColumnName="RevisitsPercent_Today" />
-          <ScalarProperty Name="NoVisitsTotal_Today" ColumnName="NoVisitsTotal_Today" />
-          <ScalarProperty Name="NoVisitsPercent_Today" ColumnName="NoVisitsPercent_Today" />
-          <ScalarProperty Name="UrlTotal_Week" ColumnName="UrlTotal_Week" />
-          <ScalarProperty Name="UrlPercent_Week" ColumnName="UrlPercent_Week" />
-          <ScalarProperty Name="VisitsTotal_Week" ColumnName="VisitsTotal_Week" />
-          <ScalarProperty Name="VisitsPercent_Week" ColumnName="VisitsPercent_Week" />
-          <ScalarProperty Name="RevisitsTotal_Week" ColumnName="RevisitsTotal_Week" />
-          <ScalarProperty Name="RevisitsPercent_Week" ColumnName="RevisitsPercent_Week" />
-          <ScalarProperty Name="NoVisitsTotal_Week" ColumnName="NoVisitsTotal_Week" />
-          <ScalarProperty Name="NoVisitsPercent_Week" ColumnName="NoVisitsPercent_Week" />
-          <ScalarProperty Name="UrlTotal_Month" ColumnName="UrlTotal_Month" />
-          <ScalarProperty Name="UrlTotalPercent_Month" ColumnName="UrlTotalPercent_Month" />
-          <ScalarProperty Name="VisitsTotal_Month" ColumnName="VisitsTotal_Month" />
-          <ScalarProperty Name="VisitsPercent_Month" ColumnName="VisitsPercent_Month" />
-          <ScalarProperty Name="RevisitsTotal_Month" ColumnName="RevisitsTotal_Month" />
-          <ScalarProperty Name="RevisitsPercent_Month" ColumnName="RevisitsPercent_Month" />
-          <ScalarProperty Name="NoVisitsTotal_Month" ColumnName="NoVisitsTotal_Month" />
-          <ScalarProperty Name="NoVisitsPercent_Month" ColumnName="NoVisitsPercent_Month" />
-          <ScalarProperty Name="DaysCount_Week" ColumnName="DaysCount_Week" />
-          <ScalarProperty Name="DaysCount_Month" ColumnName="DaysCount_Month" />
-          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
-          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
-          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="shortenurlModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -376,5 +288,121 @@
     <FunctionImportMapping FunctionImportName="InsertSHORTURLData" FunctionName="shortenurlModel.Store.InsertSHORTURLData" />
     <FunctionImportMapping FunctionImportName="InsertUIDData" FunctionName="shortenurlModel.Store.InsertUIDData" />
     <FunctionImportMapping FunctionImportName="spGetALLCOUNTS1" FunctionName="shortenurlModel.Store.spGetALLCOUNTS1" />
+    <EntitySetMapping Name="activity_counts">
+      <EntityTypeMapping TypeName="shortenurlModel.activity_counts">
+        <MappingFragment StoreEntitySet="activity_counts">
+          <ScalarProperty Name="FK_ClientId" ColumnName="FK_ClientId" />
+          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
+          <ScalarProperty Name="DaysCount" ColumnName="DaysCount" />
+          <ScalarProperty Name="NoVisitsPercent_Month" ColumnName="NoVisitsPercent_Month" />
+          <ScalarProperty Name="NoVisitsTotal_Month" ColumnName="NoVisitsTotal_Month" />
+          <ScalarProperty Name="RevisitsPercent_Month" ColumnName="RevisitsPercent_Month" />
+          <ScalarProperty Name="RevisitsTotal_Month" ColumnName="RevisitsTotal_Month" />
+          <ScalarProperty Name="VisitsPercent_Month" ColumnName="VisitsPercent_Month" />
+          <ScalarProperty Name="VisitsTotal_Month" ColumnName="VisitsTotal_Month" />
+          <ScalarProperty Name="UrlPercent_Month" ColumnName="UrlPercent_Month" />
+          <ScalarProperty Name="UrlTotal_Month" ColumnName="UrlTotal_Month" />
+          <ScalarProperty Name="NoVisitsPercent_Week" ColumnName="NoVisitsPercent_Week" />
+          <ScalarProperty Name="NoVisitsTotal_Week" ColumnName="NoVisitsTotal_Week" />
+          <ScalarProperty Name="RevisitsPercent_Week" ColumnName="RevisitsPercent_Week" />
+          <ScalarProperty Name="RevisitsTotal_Week" ColumnName="RevisitsTotal_Week" />
+          <ScalarProperty Name="VisitsPercent_Week" ColumnName="VisitsPercent_Week" />
+          <ScalarProperty Name="VisitsTotal_Week" ColumnName="VisitsTotal_Week" />
+          <ScalarProperty Name="UrlPercent_Week" ColumnName="UrlPercent_Week" />
+          <ScalarProperty Name="UrlTotal_Week" ColumnName="UrlTotal_Week" />
+          <ScalarProperty Name="NoVisitsPercent_Today" ColumnName="NoVisitsPercent_Today" />
+          <ScalarProperty Name="NoVisitsTotal_Today" ColumnName="NoVisitsTotal_Today" />
+          <ScalarProperty Name="RevisitsPercent_Today" ColumnName="RevisitsPercent_Today" />
+          <ScalarProperty Name="RevisitsTotal_Today" ColumnName="RevisitsTotal_Today" />
+          <ScalarProperty Name="VisitsPercent_Today" ColumnName="VisitsPercent_Today" />
+          <ScalarProperty Name="VisitsTotal_Today" ColumnName="VisitsTotal_Today" />
+          <ScalarProperty Name="UrlPercent_Today" ColumnName="UrlPercent_Today" />
+          <ScalarProperty Name="UrlTotal_Today" ColumnName="UrlTotal_Today" />
+          <ScalarProperty Name="PK_Activity" ColumnName="PK_Activity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shorturlclickreferences">
+      <EntityTypeMapping TypeName="shortenurlModel.shorturlclickreference">
+        <MappingFragment StoreEntitySet="shorturlclickreference">
+          <ScalarProperty Name="Ref_UsersID" ColumnName="Ref_UsersID" />
+          <ScalarProperty Name="Ref_ShorturlClickID" ColumnName="Ref_ShorturlClickID" />
+          <ScalarProperty Name="PK_ClickID" ColumnName="PK_ClickID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stat_counts">
+      <EntityTypeMapping TypeName="shortenurlModel.stat_counts">
+        <MappingFragment StoreEntitySet="stat_counts">
+          <ScalarProperty Name="NoVisitsTotal_Yesterday" ColumnName="NoVisitsTotal_Yesterday" />
+          <ScalarProperty Name="RevisitsTotal_Yesterday" ColumnName="RevisitsTotal_Yesterday" />
+          <ScalarProperty Name="UniqueVisits" ColumnName="UniqueVisits" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="FK_Rid" ColumnName="FK_Rid" />
+          <ScalarProperty Name="DaysCount_Month" ColumnName="DaysCount_Month" />
+          <ScalarProperty Name="DaysCount_Week" ColumnName="DaysCount_Week" />
+          <ScalarProperty Name="NoVisitsPercent_Month" ColumnName="NoVisitsPercent_Month" />
+          <ScalarProperty Name="NoVisitsTotal_Month" ColumnName="NoVisitsTotal_Month" />
+          <ScalarProperty Name="RevisitsPercent_Month" ColumnName="RevisitsPercent_Month" />
+          <ScalarProperty Name="RevisitsTotal_Month" ColumnName="RevisitsTotal_Month" />
+          <ScalarProperty Name="VisitsPercent_Month" ColumnName="VisitsPercent_Month" />
+          <ScalarProperty Name="VisitsTotal_Month" ColumnName="VisitsTotal_Month" />
+          <ScalarProperty Name="UrlTotalPercent_Month" ColumnName="UrlTotalPercent_Month" />
+          <ScalarProperty Name="UrlTotal_Month" ColumnName="UrlTotal_Month" />
+          <ScalarProperty Name="NoVisitsPercent_Week" ColumnName="NoVisitsPercent_Week" />
+          <ScalarProperty Name="NoVisitsTotal_Week" ColumnName="NoVisitsTotal_Week" />
+          <ScalarProperty Name="RevisitsPercent_Week" ColumnName="RevisitsPercent_Week" />
+          <ScalarProperty Name="RevisitsTotal_Week" ColumnName="RevisitsTotal_Week" />
+          <ScalarProperty Name="VisitsPercent_Week" ColumnName="VisitsPercent_Week" />
+          <ScalarProperty Name="VisitsTotal_Week" ColumnName="VisitsTotal_Week" />
+          <ScalarProperty Name="UrlPercent_Week" ColumnName="UrlPercent_Week" />
+          <ScalarProperty Name="UrlTotal_Week" ColumnName="UrlTotal_Week" />
+          <ScalarProperty Name="NoVisitsPercent_Today" ColumnName="NoVisitsPercent_Today" />
+          <ScalarProperty Name="NoVisitsTotal_Today" ColumnName="NoVisitsTotal_Today" />
+          <ScalarProperty Name="RevisitsPercent_Today" ColumnName="RevisitsPercent_Today" />
+          <ScalarProperty Name="RevisitsTotal_Today" ColumnName="RevisitsTotal_Today" />
+          <ScalarProperty Name="VisitsPercent_Today" ColumnName="VisitsPercent_Today" />
+          <ScalarProperty Name="VisitsTotal_Today" ColumnName="VisitsTotal_Today" />
+          <ScalarProperty Name="UrlPercent_Today" ColumnName="UrlPercent_Today" />
+          <ScalarProperty Name="UrlTotal_Today" ColumnName="UrlTotal_Today" />
+          <ScalarProperty Name="CampaignsMonth" ColumnName="CampaignsMonth" />
+          <ScalarProperty Name="CampaignsLast7days" ColumnName="CampaignsLast7days" />
+          <ScalarProperty Name="TotalCamapigns" ColumnName="TotalCamapigns" />
+          <ScalarProperty Name="VisitsLast7days" ColumnName="VisitsLast7days" />
+          <ScalarProperty Name="UniqueVisitsLast7day" ColumnName="UniqueVisitsLast7day" />
+          <ScalarProperty Name="UniqueVisitsYesterday" ColumnName="UniqueVisitsYesterday" />
+          <ScalarProperty Name="VisitsYesterday" ColumnName="VisitsYesterday" />
+          <ScalarProperty Name="UniqueVisitsToday" ColumnName="UniqueVisitsToday" />
+          <ScalarProperty Name="VisitsToday" ColumnName="VisitsToday" />
+          <ScalarProperty Name="TotalVisits" ColumnName="TotalVisits" />
+          <ScalarProperty Name="UsersLast7days" ColumnName="UsersLast7days" />
+          <ScalarProperty Name="UniqueUsersLast7days" ColumnName="UniqueUsersLast7days" />
+          <ScalarProperty Name="UsersYesterday" ColumnName="UsersYesterday" />
+          <ScalarProperty Name="UniqueUsersYesterday" ColumnName="UniqueUsersYesterday" />
+          <ScalarProperty Name="UsersToday" ColumnName="UsersToday" />
+          <ScalarProperty Name="UniqueUsersToday" ColumnName="UniqueUsersToday" />
+          <ScalarProperty Name="UniqueUsers" ColumnName="UniqueUsers" />
+          <ScalarProperty Name="TotalUsers" ColumnName="TotalUsers" />
+          <ScalarProperty Name="PK_Stat" ColumnName="PK_Stat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stats_counts_today">
+      <EntityTypeMapping TypeName="shortenurlModel.stats_counts_today">
+        <MappingFragment StoreEntitySet="stats_counts_today">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FK_ClientID" ColumnName="FK_ClientID" />
+          <ScalarProperty Name="FK_RID" ColumnName="FK_RID" />
+          <ScalarProperty Name="UniqueVisits_Today" ColumnName="UniqueVisits_Today" />
+          <ScalarProperty Name="UniqueUsers_Today" ColumnName="UniqueUsers_Today" />
+          <ScalarProperty Name="NoVisits_Today" ColumnName="NoVisits_Today" />
+          <ScalarProperty Name="Revisitsl_Today" ColumnName="Revisitsl_Today" />
+          <ScalarProperty Name="Visits_Today" ColumnName="Visits_Today" />
+          <ScalarProperty Name="Users_Today" ColumnName="Users_Today" />
+          <ScalarProperty Name="PKStatsToday_Count" ColumnName="PKStatsToday_Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
