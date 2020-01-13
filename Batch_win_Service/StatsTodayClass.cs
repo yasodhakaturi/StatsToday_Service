@@ -25,6 +25,7 @@ namespace StatsToday_Service
         public int UniqueUsers_Today { get; set; }
         //public int UniqueUsers { get; set; }
         public int? fk_rid { get; set; }
+        public int? fk_clientid { get; set; }
     }
     public class StatsModel_uniquevisits
     {
@@ -37,6 +38,7 @@ namespace StatsToday_Service
     {
         public int Todays_ReVisitCount { get; set; }
         public int uniqueVisits_today { get; set; }
+        public int Visits_today { get; set; }
         public int? fk_rid { get; set; }
         public int? fk_clientid { get; set; }
     }
@@ -54,6 +56,7 @@ namespace StatsToday_Service
     {
         public int UniqueUsers { get; set; }
         public int? fk_rid { get; set; }
+        public int? fk_clientid { get; set; }
     }
     public class StatsCounts_Today
     {
