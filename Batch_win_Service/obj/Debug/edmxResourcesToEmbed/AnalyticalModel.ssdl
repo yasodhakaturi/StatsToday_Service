@@ -1,38 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="shortenurlModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="activity_counts">
-    <Key>
-      <PropertyRef Name="PK_Activity" />
-    </Key>
-    <Property Name="PK_Activity" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UrlTotal_Today" Type="int" />
-    <Property Name="UrlPercent_Today" Type="int" />
-    <Property Name="VisitsTotal_Today" Type="int" />
-    <Property Name="VisitsPercent_Today" Type="int" />
-    <Property Name="RevisitsTotal_Today" Type="int" />
-    <Property Name="RevisitsPercent_Today" Type="int" />
-    <Property Name="NoVisitsTotal_Today" Type="int" />
-    <Property Name="NoVisitsPercent_Today" Type="int" />
-    <Property Name="UrlTotal_Week" Type="int" />
-    <Property Name="UrlPercent_Week" Type="int" />
-    <Property Name="VisitsTotal_Week" Type="int" />
-    <Property Name="VisitsPercent_Week" Type="int" />
-    <Property Name="RevisitsTotal_Week" Type="int" />
-    <Property Name="RevisitsPercent_Week" Type="int" />
-    <Property Name="NoVisitsTotal_Week" Type="int" />
-    <Property Name="NoVisitsPercent_Week" Type="int" />
-    <Property Name="UrlTotal_Month" Type="int" />
-    <Property Name="UrlPercent_Month" Type="int" />
-    <Property Name="VisitsTotal_Month" Type="int" />
-    <Property Name="VisitsPercent_Month" Type="int" />
-    <Property Name="RevisitsTotal_Month" Type="int" />
-    <Property Name="RevisitsPercent_Month" Type="int" />
-    <Property Name="NoVisitsTotal_Month" Type="int" />
-    <Property Name="NoVisitsPercent_Month" Type="int" />
-    <Property Name="DaysCount" Type="int" />
-    <Property Name="FK_Rid" Type="int" />
-    <Property Name="FK_ClientId" Type="int" />
-  </EntityType>
   <EntityType Name="batchuploaddata">
     <Key>
       <PropertyRef Name="PK_Batchid" />
@@ -60,47 +27,6 @@
     <Property Name="FK_Rid" Type="int" />
     <Property Name="FK_ClientID" Type="int" />
     <Property Name="UpdatedDate" Type="datetime" Precision="6" />
-  </EntityType>
-  <EntityType Name="city_blocks_ipv4_geolite2">
-    <Key>
-      <PropertyRef Name="PK_City_ID_IPV4" />
-    </Key>
-    <Property Name="PK_City_ID_IPV4" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="network" Type="varchar" MaxLength="50" />
-    <Property Name="Start_IPv4_address" Type="varchar" MaxLength="50" />
-    <Property Name="End_IPv4_address" Type="varchar" MaxLength="50" />
-    <Property Name="Start_IP_num" Type="varchar" MaxLength="50" />
-    <Property Name="End_IP_num" Type="varchar" MaxLength="50" />
-    <Property Name="geoname_id" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="registered_country_geoname_id" Type="varchar" MaxLength="50" />
-    <Property Name="represented_country_geoname_id" Type="varchar" MaxLength="50" />
-    <Property Name="is_anonymous_proxy" Type="varchar" MaxLength="50" />
-    <Property Name="is_satellite_provider" Type="varchar" MaxLength="50" />
-    <Property Name="postal_code" Type="varchar" MaxLength="50" />
-    <Property Name="latitude" Type="varchar" MaxLength="50" />
-    <Property Name="longitude" Type="varchar" MaxLength="50" />
-    <Property Name="accuracy_radius" Type="varchar" MaxLength="50" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="city_locations_geolite2">
-    <Key>
-      <PropertyRef Name="PK_City_Location_ID" />
-    </Key>
-    <Property Name="PK_City_Location_ID" Type="int" Nullable="false" />
-    <Property Name="geoname_id" Type="varchar" MaxLength="50" />
-    <Property Name="locale_code" Type="varchar" MaxLength="50" />
-    <Property Name="continent_code" Type="varchar" MaxLength="50" />
-    <Property Name="continent_name" Type="varchar" MaxLength="50" />
-    <Property Name="country_iso_code" Type="varchar" MaxLength="50" />
-    <Property Name="country_name" Type="varchar" MaxLength="50" />
-    <Property Name="subdivision_1_iso_code" Type="varchar" MaxLength="50" />
-    <Property Name="subdivision_1_name" Type="varchar" MaxLength="50" />
-    <Property Name="subdivision_2_iso_code" Type="varchar" MaxLength="50" />
-    <Property Name="subdivision_2_name" Type="varchar" MaxLength="50" />
-    <Property Name="city_name" Type="varchar" MaxLength="50" />
-    <Property Name="metro_code" Type="varchar" MaxLength="50" />
-    <Property Name="time_zone" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="client">
     <Key>
@@ -136,6 +62,24 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Property Name="StackTrace" Type="longtext" />
     <Property Name="ErrorMessage" Type="longtext" />
   </EntityType>
+  <EntityType Name="excluded_shorturl">
+    <Key>
+      <PropertyRef Name="PK_Exclude_Shorturl" />
+    </Key>
+    <Property Name="PK_Exclude_Shorturl" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ipv4" Type="varchar" MaxLength="450" />
+    <Property Name="Ipv6" Type="varchar" MaxLength="450" />
+    <Property Name="Browser" Type="varchar" MaxLength="50" />
+    <Property Name="Browser_version" Type="varchar" MaxLength="50" />
+    <Property Name="Req_url" Type="longtext" />
+    <Property Name="UserAgent" Type="longtext" />
+    <Property Name="IsMobileDevice" Type="varchar" MaxLength="50" />
+    <Property Name="HeaderValues" Type="varchar" MaxLength="600" />
+    <Property Name="FK_Uid" Type="int" />
+    <Property Name="FK_RID" Type="int" />
+    <Property Name="FK_ClientID" Type="int" />
+    <Property Name="CreatedDate" Type="datetime" Precision="6" />
+  </EntityType>
   <EntityType Name="freegeoipdata">
     <Key>
       <PropertyRef Name="PK_freeGeoip_id" />
@@ -169,20 +113,6 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Property Name="FK_Rid" Type="int" />
     <Property Name="FK_ClientID" Type="int" />
     <Property Name="FK_HookID" Type="int" />
-  </EntityType>
-  <EntityType Name="locations_data">
-    <Key>
-      <PropertyRef Name="PK_LOC_ID" />
-    </Key>
-    <Property Name="PK_LOC_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="locId" Type="int" Nullable="false" />
-    <Property Name="country" Type="longtext" />
-    <Property Name="region" Type="longtext" />
-    <Property Name="city" Type="longtext" />
-    <Property Name="postalCode" Type="longtext" />
-    <Property Name="latitude" Type="longtext" />
-    <Property Name="longitude" Type="longtext" />
-    <Property Name="metroCode" Type="longtext" />
   </EntityType>
   <EntityType Name="loginhistory">
     <Key>
@@ -236,6 +166,7 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Property Name="PK_ClickID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Ref_ShorturlClickID" Type="int" />
     <Property Name="Ref_UsersID" Type="int" />
+    <Property Name="UpdatedDate" Type="datetime" Precision="0" />
   </EntityType>
   <EntityType Name="shorturldata">
     <Key>
@@ -272,6 +203,8 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Property Name="FK_City_Master_id" Type="int" />
     <Property Name="ACK" Type="varchar" MaxLength="45" />
     <Property Name="ACKDATE" Type="datetime" Precision="6" />
+    <Property Name="Request_Header" Type="varchar" MaxLength="600" />
+    <Property Name="IPHeaderType" Type="varchar" MaxLength="60" />
   </EntityType>
   <EntityType Name="stat_counts">
     <Key>
@@ -329,21 +262,6 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Property Name="RevisitsTotal_Yesterday" Type="int" />
     <Property Name="NoVisitsTotal_Yesterday" Type="int" />
   </EntityType>
-  <EntityType Name="stats_counts_today">
-    <Key>
-      <PropertyRef Name="PKStatsToday_Count" />
-    </Key>
-    <Property Name="PKStatsToday_Count" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Users_Today" Type="int" />
-    <Property Name="Visits_Today" Type="int" />
-    <Property Name="Revisitsl_Today" Type="int" />
-    <Property Name="NoVisits_Today" Type="int" />
-    <Property Name="UniqueUsers_Today" Type="int" />
-    <Property Name="UniqueVisits_Today" Type="int" />
-    <Property Name="FK_RID" Type="int" />
-    <Property Name="FK_ClientID" Type="int" />
-    <Property Name="CreatedDate" Type="datetime" Precision="0" />
-  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -377,19 +295,8 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Property Name="UniqueNumber" Type="varchar" MaxLength="450" />
     <Property Name="CreatedBy" Type="int" />
     <Property Name="FK_Batchid" Type="int" />
+    <Property Name="ExistingUrlBatchIds" Type="longtext" />
   </EntityType>
-  <Association Name="clientid">
-    <End Role="client" Type="Self.client" Multiplicity="0..1" />
-    <End Role="stats_counts_today" Type="Self.stats_counts_today" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="client">
-        <PropertyRef Name="PK_ClientID" />
-      </Principal>
-      <Dependent Role="stats_counts_today">
-        <PropertyRef Name="FK_ClientID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_RIDDATA_Client">
     <End Role="client" Type="Self.client" Multiplicity="1" />
     <End Role="riddata" Type="Self.riddata" Multiplicity="*" />
@@ -462,18 +369,6 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fkrid">
-    <End Role="riddata" Type="Self.riddata" Multiplicity="0..1" />
-    <End Role="stats_counts_today" Type="Self.stats_counts_today" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="riddata">
-        <PropertyRef Name="PK_Rid" />
-      </Principal>
-      <Dependent Role="stats_counts_today">
-        <PropertyRef Name="FK_RID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="hitnotify_ibfk_1">
     <End Role="campaignhookurl" Type="Self.campaignhookurl" Multiplicity="0..1" />
     <End Role="hitnotify" Type="Self.hitnotify" Multiplicity="*" />
@@ -511,6 +406,8 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Parameter Name="mobilenumber" Type="varchar" Mode="In" />
     <Parameter Name="hitnotify" Type="tinyint" Mode="In" />
     <Parameter Name="PK_HookId" Type="int" Mode="In" />
+    <Parameter Name="HeaderValues" Type="varchar" Mode="In" />
+    <Parameter Name="IPHeaderType" Type="varchar" Mode="In" />
   </Function>
   <Function Name="InsertUIDData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="shortenurl">
     <Parameter Name="fk_rid" Type="int" Mode="In" />
@@ -518,6 +415,9 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <Parameter Name="referencenumber" Type="varchar" Mode="In" />
     <Parameter Name="longurl" Type="longtext" Mode="In" />
     <Parameter Name="mobilenumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spDelete_Campaign" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="shortenurl">
+    <Parameter Name="FKRID" Type="int" Mode="In" />
   </Function>
   <Function Name="spGetALLCOUNTS1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="shortenurl">
     <Parameter Name="DateFrom" Type="varchar" Mode="In" />
@@ -539,21 +439,19 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
   <Function Name="spGetDashBoardSummary" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="shortenurl">
     <Parameter Name="FkClientId" Type="int" Mode="In" />
   </Function>
-  <Function Name="spGetDashBoardSummary1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="shortenurl">
-    <Parameter Name="FkClientId" Type="int" Mode="In" />
+  <Function Name="spGetUIDDATA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="shortenurl">
+    <Parameter Name="unique_number" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="shortenurlModelStoreContainer">
-    <EntitySet Name="activity_counts" EntityType="Self.activity_counts" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="batchuploaddata" EntityType="Self.batchuploaddata" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="campaignhookurl" EntityType="Self.campaignhookurl" Schema="shortenurl" store:Type="Tables" />
-    <EntitySet Name="city_blocks_ipv4_geolite2" EntityType="Self.city_blocks_ipv4_geolite2" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="client" EntityType="Self.client" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="cookietable" EntityType="Self.cookietable" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="errorlog" EntityType="Self.errorlog" Schema="shortenurl" store:Type="Tables" />
+    <EntitySet Name="excluded_shorturl" EntityType="Self.excluded_shorturl" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="freegeoipdata" EntityType="Self.freegeoipdata" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="hashidlist" EntityType="Self.hashidlist" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="hitnotify" EntityType="Self.hitnotify" Schema="shortenurl" store:Type="Tables" />
-    <EntitySet Name="locations_data" EntityType="Self.locations_data" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="loginhistory" EntityType="Self.loginhistory" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="master_location" EntityType="Self.master_location" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="messagelinks" EntityType="Self.messagelinks" Schema="shortenurl" store:Type="Tables" />
@@ -561,32 +459,9 @@ warning 6002: The table/view 'def.shortenurl.city_locations_geolite2' does not h
     <EntitySet Name="shorturlclickreference" EntityType="Self.shorturlclickreference" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="shorturldata" EntityType="Self.shorturldata" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="stat_counts" EntityType="Self.stat_counts" Schema="shortenurl" store:Type="Tables" />
-    <EntitySet Name="stats_counts_today" EntityType="Self.stats_counts_today" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="tmp_rownum_update" EntityType="Self.tmp_rownum_update" Schema="shortenurl" store:Type="Tables" />
     <EntitySet Name="uiddata" EntityType="Self.uiddata" Schema="shortenurl" store:Type="Tables" />
-    <EntitySet Name="city_locations_geolite2" EntityType="Self.city_locations_geolite2" store:Type="Tables" store:Schema="shortenurl">
-      <DefiningQuery>SELECT
-`city_locations_geolite2`.`PK_City_Location_ID`, 
-`city_locations_geolite2`.`geoname_id`, 
-`city_locations_geolite2`.`locale_code`, 
-`city_locations_geolite2`.`continent_code`, 
-`city_locations_geolite2`.`continent_name`, 
-`city_locations_geolite2`.`country_iso_code`, 
-`city_locations_geolite2`.`country_name`, 
-`city_locations_geolite2`.`subdivision_1_iso_code`, 
-`city_locations_geolite2`.`subdivision_1_name`, 
-`city_locations_geolite2`.`subdivision_2_iso_code`, 
-`city_locations_geolite2`.`subdivision_2_name`, 
-`city_locations_geolite2`.`city_name`, 
-`city_locations_geolite2`.`metro_code`, 
-`city_locations_geolite2`.`time_zone`
-FROM `city_locations_geolite2` AS `city_locations_geolite2`</DefiningQuery>
-    </EntitySet>
-    <AssociationSet Name="clientid" Association="Self.clientid">
-      <End Role="client" EntitySet="client" />
-      <End Role="stats_counts_today" EntitySet="stats_counts_today" />
-    </AssociationSet>
     <AssociationSet Name="FK_RIDDATA_Client" Association="Self.FK_RIDDATA_Client">
       <End Role="client" EntitySet="client" />
       <End Role="riddata" EntitySet="riddata" />
@@ -610,10 +485,6 @@ FROM `city_locations_geolite2` AS `city_locations_geolite2`</DefiningQuery>
     <AssociationSet Name="FK_UIDDATA_RIDDATA" Association="Self.FK_UIDDATA_RIDDATA">
       <End Role="riddata" EntitySet="riddata" />
       <End Role="uiddata" EntitySet="uiddata" />
-    </AssociationSet>
-    <AssociationSet Name="fkrid" Association="Self.fkrid">
-      <End Role="riddata" EntitySet="riddata" />
-      <End Role="stats_counts_today" EntitySet="stats_counts_today" />
     </AssociationSet>
     <AssociationSet Name="hitnotify_ibfk_1" Association="Self.hitnotify_ibfk_1">
       <End Role="campaignhookurl" EntitySet="campaignhookurl" />

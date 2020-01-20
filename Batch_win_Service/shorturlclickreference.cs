@@ -17,5 +17,6 @@ namespace StatsToday_Service
         public int PK_ClickID { get; set; }
         public Nullable<int> Ref_ShorturlClickID { get; set; }
         public Nullable<int> Ref_UsersID { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
     }
 }

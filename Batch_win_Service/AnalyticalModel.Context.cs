@@ -29,27 +29,23 @@ namespace StatsToday_Service
     
         public virtual DbSet<batchuploaddata> batchuploaddatas { get; set; }
         public virtual DbSet<campaignhookurl> campaignhookurls { get; set; }
-        public virtual DbSet<city_blocks_ipv4_geolite2> city_blocks_ipv4_geolite2 { get; set; }
         public virtual DbSet<client> clients { get; set; }
         public virtual DbSet<cookietable> cookietables { get; set; }
         public virtual DbSet<errorlog> errorlogs { get; set; }
+        public virtual DbSet<excluded_shorturl> excluded_shorturl { get; set; }
         public virtual DbSet<freegeoipdata> freegeoipdatas { get; set; }
         public virtual DbSet<hashidlist> hashidlists { get; set; }
         public virtual DbSet<hitnotify> hitnotifies { get; set; }
-        public virtual DbSet<locations_data> locations_data { get; set; }
         public virtual DbSet<loginhistory> loginhistories { get; set; }
         public virtual DbSet<master_location> master_location { get; set; }
         public virtual DbSet<messagelink> messagelinks { get; set; }
         public virtual DbSet<riddata> riddatas { get; set; }
+        public virtual DbSet<shorturlclickreference> shorturlclickreferences { get; set; }
         public virtual DbSet<shorturldata> shorturldatas { get; set; }
+        public virtual DbSet<stat_counts> stat_counts { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tmp_rownum_update> tmp_rownum_update { get; set; }
         public virtual DbSet<uiddata> uiddatas { get; set; }
-        public virtual DbSet<city_locations_geolite2> city_locations_geolite2 { get; set; }
-        public virtual DbSet<activity_counts> activity_counts { get; set; }
-        public virtual DbSet<shorturlclickreference> shorturlclickreferences { get; set; }
-        public virtual DbSet<stat_counts> stat_counts { get; set; }
-        public virtual DbSet<stats_counts_today> stats_counts_today { get; set; }
     
         public virtual int InsertRIDData(string campaignName, string referencenumber, string pwd, Nullable<int> clientid)
         {
@@ -72,7 +68,7 @@ namespace StatsToday_Service
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertRIDData", campaignNameParameter, referencenumberParameter, pwdParameter, clientidParameter);
         }
     
-        public virtual int InsertSHORTURLData(string ipv4, string ipv6, string browser, string browser_version, string latitude, string longitude, Nullable<long> ipnum, string req_url, string useragent, string hostname, string isMobiledevice, Nullable<int> fk_uid, Nullable<int> fk_rid, Nullable<int> fK_clientid, string cookievalue, string mobilenumber, Nullable<sbyte> hitnotify, Nullable<int> pK_HookId)
+        public virtual int InsertSHORTURLData(string ipv4, string ipv6, string browser, string browser_version, string latitude, string longitude, Nullable<long> ipnum, string req_url, string useragent, string hostname, string isMobiledevice, Nullable<int> fk_uid, Nullable<int> fk_rid, Nullable<int> fK_clientid, string cookievalue, string mobilenumber, Nullable<sbyte> hitnotify, Nullable<int> pK_HookId, string headerValues, string iPHeaderType)
         {
             var ipv4Parameter = ipv4 != null ?
                 new ObjectParameter("ipv4", ipv4) :
@@ -146,7 +142,15 @@ namespace StatsToday_Service
                 new ObjectParameter("PK_HookId", pK_HookId) :
                 new ObjectParameter("PK_HookId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertSHORTURLData", ipv4Parameter, ipv6Parameter, browserParameter, browser_versionParameter, latitudeParameter, longitudeParameter, ipnumParameter, req_urlParameter, useragentParameter, hostnameParameter, isMobiledeviceParameter, fk_uidParameter, fk_ridParameter, fK_clientidParameter, cookievalueParameter, mobilenumberParameter, hitnotifyParameter, pK_HookIdParameter);
+            var headerValuesParameter = headerValues != null ?
+                new ObjectParameter("HeaderValues", headerValues) :
+                new ObjectParameter("HeaderValues", typeof(string));
+    
+            var iPHeaderTypeParameter = iPHeaderType != null ?
+                new ObjectParameter("IPHeaderType", iPHeaderType) :
+                new ObjectParameter("IPHeaderType", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertSHORTURLData", ipv4Parameter, ipv6Parameter, browserParameter, browser_versionParameter, latitudeParameter, longitudeParameter, ipnumParameter, req_urlParameter, useragentParameter, hostnameParameter, isMobiledeviceParameter, fk_uidParameter, fk_ridParameter, fK_clientidParameter, cookievalueParameter, mobilenumberParameter, hitnotifyParameter, pK_HookIdParameter, headerValuesParameter, iPHeaderTypeParameter);
         }
     
         public virtual int InsertUIDData(Nullable<int> fk_rid, Nullable<int> fk_clientid, string referencenumber, string longurl, string mobilenumber)
@@ -174,6 +178,15 @@ namespace StatsToday_Service
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("InsertUIDData", fk_ridParameter, fk_clientidParameter, referencenumberParameter, longurlParameter, mobilenumberParameter);
         }
     
+        public virtual int spDelete_Campaign(Nullable<int> fKRID)
+        {
+            var fKRIDParameter = fKRID.HasValue ?
+                new ObjectParameter("FKRID", fKRID) :
+                new ObjectParameter("FKRID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spDelete_Campaign", fKRIDParameter);
+        }
+    
         public virtual int spGetALLCOUNTS1(string dateFrom, string dateTo, Nullable<int> rid)
         {
             var dateFromParameter = dateFrom != null ?
@@ -189,6 +202,15 @@ namespace StatsToday_Service
                 new ObjectParameter("rid", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("spGetALLCOUNTS1", dateFromParameter, dateToParameter, ridParameter);
+        }
+    
+        public virtual ObjectResult<spGetUIDDATA_Result> spGetUIDDATA(string unique_number)
+        {
+            var unique_numberParameter = unique_number != null ?
+                new ObjectParameter("unique_number", unique_number) :
+                new ObjectParameter("unique_number", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUIDDATA_Result>("spGetUIDDATA", unique_numberParameter);
         }
     }
 }

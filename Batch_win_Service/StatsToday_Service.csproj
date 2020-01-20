@@ -76,9 +76,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="activity_counts.cs">
-      <DependentUpon>AnalyticalModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="AnalyticalModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,20 +97,16 @@
     <Compile Include="campaignhookurl.cs">
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="city_blocks_ipv4_geolite2.cs">
-      <DependentUpon>AnalyticalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="city_locations_geolite2.cs">
-      <DependentUpon>AnalyticalModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="client.cs">
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="cookietable.cs">
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="StatsTodayClass.cs" />
     <Compile Include="errorlog.cs">
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="excluded_shorturl.cs">
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="freegeoipdata.cs">
@@ -123,9 +116,6 @@
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="hitnotify.cs">
-      <DependentUpon>AnalyticalModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="locations_data.cs">
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="loginhistory.cs">
@@ -146,6 +136,10 @@
     <Compile Include="shorturldata.cs">
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="spGetUIDDATA_Result.cs">
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StatsTodayClass.cs" />
     <Compile Include="StatsToday_Service.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -161,9 +155,6 @@
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="stats_counts_today.cs">
-      <DependentUpon>AnalyticalModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="stat_counts.cs">
       <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>

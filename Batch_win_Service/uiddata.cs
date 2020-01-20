@@ -32,6 +32,7 @@ namespace StatsToday_Service
         public string UniqueNumber { get; set; }
         public Nullable<int> CreatedBy { get; set; }
         public Nullable<int> FK_Batchid { get; set; }
+        public string ExistingUrlBatchIds { get; set; }
     
         public virtual client client { get; set; }
         public virtual riddata riddata { get; set; }

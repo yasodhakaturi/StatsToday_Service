@@ -14,12 +14,6 @@ namespace StatsToday_Service
     
     public partial class shorturldata
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public shorturldata()
-        {
-            this.cookietables = new HashSet<cookietable>();
-        }
-    
         public int PK_Shorturl { get; set; }
         public string Ipv4 { get; set; }
         public string Ipv6 { get; set; }
@@ -51,10 +45,10 @@ namespace StatsToday_Service
         public Nullable<int> FK_City_Master_id { get; set; }
         public string ACK { get; set; }
         public Nullable<System.DateTime> ACKDATE { get; set; }
+        public string Request_Header { get; set; }
+        public string IPHeaderType { get; set; }
     
         public virtual client client { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cookietable> cookietables { get; set; }
         public virtual riddata riddata { get; set; }
         public virtual uiddata uiddata { get; set; }
     }
