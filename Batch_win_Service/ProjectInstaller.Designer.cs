@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.StatsToday_Service = new System.ServiceProcess.ServiceProcessInstaller();
+            this.MySqlStatsToday_Service = new System.ServiceProcess.ServiceProcessInstaller();
             this.serviceInstaller_StatsToday_Service = new System.ServiceProcess.ServiceInstaller();
             // 
-            // StatsToday_Service
+            // MySqlStatsToday_Service
             // 
-            this.StatsToday_Service.Account = System.ServiceProcess.ServiceAccount.LocalService;
-            this.StatsToday_Service.Password = null;
-            this.StatsToday_Service.Username = null;
-            this.StatsToday_Service.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.serviceProcessInstaller_StatsToday_Service_AfterInstall);
+            this.MySqlStatsToday_Service.Account = System.ServiceProcess.ServiceAccount.LocalService;
+            this.MySqlStatsToday_Service.Password = null;
+            this.MySqlStatsToday_Service.Username = null;
+            this.MySqlStatsToday_Service.AfterInstall += new System.Configuration.Install.InstallEventHandler(this.serviceProcessInstaller_StatsToday_Service_AfterInstall);
             // 
             // serviceInstaller_StatsToday_Service
             // 
@@ -46,7 +46,7 @@
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.StatsToday_Service,
+            this.MySqlStatsToday_Service,
             this.serviceInstaller_StatsToday_Service});
 
         }
@@ -54,6 +54,6 @@
         #endregion
 
         private System.ServiceProcess.ServiceInstaller serviceInstaller_StatsToday_Service;
-        public System.ServiceProcess.ServiceProcessInstaller StatsToday_Service;
+        public System.ServiceProcess.ServiceProcessInstaller MySqlStatsToday_Service;
     }
 }

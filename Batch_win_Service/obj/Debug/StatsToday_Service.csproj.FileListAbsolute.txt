@@ -6,3 +6,39 @@ C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL docum
 C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.exe
 C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.pdb
 C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.csprojResolveAssemblyReference.cache
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe.config
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.exe
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\StatsToday_Service.pdb
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.csprojAssemblyReference.cache
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.ProjectInstaller.resources
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.csproj.GenerateResource.cache
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.csproj.CopyComplete
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.exe
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Debug\StatsToday_Service.pdb
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\BouncyCastle.Crypto.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\Google.Protobuf.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\Microsoft.Web.Infrastructure.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\MySql.Data.EntityFramework.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\MySql.Web.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\Renci.SshNet.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.Helpers.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.Razor.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.WebPages.Deployment.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.WebPages.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.WebPages.Razor.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\Ubiety.Dns.Core.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\WebMatrix.Data.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\WebMatrix.WebData.dll
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\Google.Protobuf.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\MySql.Data.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\MySql.Data.Entity.EF6.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\MySql.Data.EntityFramework.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\MySql.Web.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\Renci.SshNet.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.Helpers.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.Razor.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.WebPages.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.WebPages.Deployment.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\System.Web.WebPages.Razor.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\WebMatrix.Data.xml
+E:\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Debug\WebMatrix.WebData.xml

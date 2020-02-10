@@ -85,7 +85,7 @@ namespace StatsToday_Service
                     //int refvisitid = (int)clickref.Ref_ShorturlClickID;
                     //getnextshorturlid = refvisitid + cntvisits;
                     days_diff = (int)((DateTime.UtcNow.Date - clickref.UpdatedDate.Value.Date).TotalDays);
-                     ErrorLogs.LogErrorData("days count", days_diff.ToString());
+                     //ErrorLogs.LogErrorData("days count", days_diff.ToString());
                     if (days_diff == 0)
                     {
                         getnextshorturlid = dc.shorturldatas.Max(x => x.PK_Shorturl);
