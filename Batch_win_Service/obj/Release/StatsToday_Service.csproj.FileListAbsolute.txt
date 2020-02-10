@@ -1,0 +1,13 @@
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\StatsToday_Service.exe.config
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\StatsToday_Service.exe
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\StatsToday_Service.pdb
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\EntityFramework.dll
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\MySql.Data.dll
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\MySql.Data.Entity.EF6.dll
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\Newtonsoft.Json.dll
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\bin\Release\UAParser.dll
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Release\StatsToday_Service.ProjectInstaller.resources
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Release\StatsToday_Service.csproj.GenerateResource.Cache
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Release\StatsToday_Service.exe
+C:\Users\yasodha\Documents\Visual Studio 2013\Projects\Yasodha Shorten URL documents\MYSQLProjec\MYSQLWindowsService\StatsToday_Service\Batch_win_Service\obj\Release\StatsToday_Service.pdb
