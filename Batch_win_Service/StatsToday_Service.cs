@@ -129,18 +129,20 @@ namespace StatsToday_Service
                                                {
                                                    fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
                                                    fk_clientid = res.Select(x => x.FK_ClientID).FirstOrDefault(),
-                                                   uniquevists = res.Select(x => x.FK_Uid).Distinct().ToList().Count()
-
+                                                   uniquevists = res.Select(x => x.FK_Uid).Distinct().ToList().Count(),
+                                                   totalvisits=res.Select(x=>x.FK_Uid).ToList().Count()
+                                                   
                                                }).ToList();
 
                         foreach (StatsModel_uniquevisits_Today vst in lstuniquevisits_tot_today)
                         {
                             //ErrorLogs.LogErrorData("StatsToday_Service "+"FK_RID ="+vst.fk_rid +" visits : "  +vst.Visits_today.ToString() , DateTime.UtcNow.Date.ToString());
                             stat_counts st_count = new stat_counts();
-                            int uniquevists = 0; int revisitcount = 0; int uniquevistis_today = 0; int todayvisitcount = 0;
+                            int uniquevists = 0; int revisitcount = 0; int uniquevistis_today = 0; int todayvisitcount = 0;int total_visits = 0;
                             uniquevists = lstuniquevisits_tot.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.uniquevists).SingleOrDefault();
                             revisitcount = lstuniquevisits_tot_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.Todays_ReVisitCount).SingleOrDefault();
                             uniquevistis_today = lstuniquevisits_tot_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.uniqueVisits_today).SingleOrDefault();
+                            total_visits= lstuniquevisits_tot.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.totalvisits).SingleOrDefault();
                             todayvisitcount = lstuniquevisits_tot_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.Visits_today).SingleOrDefault();
                             //int novisits = lstnovisits_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.Novists_today).SingleOrDefault();
                             st_count = dc.stat_counts.Where(x => x.FK_Rid == vst.fk_rid).Select(y => y).SingleOrDefault();
@@ -155,7 +157,8 @@ namespace StatsToday_Service
 
                                 st_count.UniqueVisits = (uniquevists > 0) ? (uniquevists) : (st_count.UniqueVisits);
                                 st_count.UniqueVisitsToday = (uniquevistis_today > 0) ? (uniquevistis_today) : (st_count.UniqueVisitsToday);
-                                st_count.TotalVisits = (vst.Visits_today > 0) ? (st_count.TotalVisits + vst.Visits_today) : st_count.TotalVisits;
+                                //st_count.TotalVisits = (vst.Visits_today > 0) ? (st_count.TotalVisits + vst.Visits_today) : st_count.TotalVisits;
+                                st_count.TotalVisits= (total_visits > 0) ? (total_visits) : (st_count.TotalVisits);
                                 //st_count.NoVisitsTotal_Today = (st_count.UniqueVisitsToday > 0) ? (st_count.UsersToday - st_count.UniqueVisitsToday) : st_count.NoVisitsTotal_Today;
                                 st_count.NoVisitsTotal_Today = (st_count.UniqueVisitsToday > 0 && st_count.UsersToday > 0 && (st_count.NoVisitsTotal_Today != (st_count.UsersToday - st_count.UniqueVisitsToday))) ? Math.Abs((int)(st_count.UsersToday - st_count.UniqueVisitsToday)) : st_count.NoVisitsTotal_Today;
                                 st_count.RevisitsPercent_Today = (st_count.RevisitsTotal_Yesterday > 0 && st_count.RevisitsTotal_Today > 0) ? ((st_count.RevisitsTotal_Today - st_count.RevisitsTotal_Yesterday) / (st_count.RevisitsTotal_Yesterday)) : 0;
@@ -173,6 +176,7 @@ namespace StatsToday_Service
                         int? VisitsToday = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.VisitsToday).Sum();
                         int? revisitstotal = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.RevisitsTotal_Today).Sum();
                         int? uniquevisits = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.UniqueVisits).Sum();
+                        int? totalvisits = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.TotalVisits).Sum();
                         int? uniquevisitstoday = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.UniqueVisitsToday).Sum();
                         int? novisitstotal = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.NoVisitsTotal_Today).Sum();
                         foreach (int id in clientid_list)
@@ -190,8 +194,8 @@ namespace StatsToday_Service
                                 //st_count_admin.UniqueVisits = (lstuniquevisits_tot != null) ? (st_count_admin.UniqueVisits + lstuniquevisits_tot.Select(x => x.uniquevists).Sum()) : st_count_admin.UniqueVisits;
                                 //st_count_admin.UniqueVisitsToday = (lstvisits != null) ? (st_count_admin.UniqueVisitsToday + lstvisits.Select(x => x.uniqueVisits_today).Sum()) : st_count_admin.UniqueVisitsToday;
 
-                                st_count_admin.TotalVisits = (lstuniquevisits_tot_today != null) ? (st_count_admin.TotalVisits + lstuniquevisits_tot_today.Select(x => x.Visits_today).Sum()) : st_count_admin.TotalVisits;
-
+                                //st_count_admin.TotalVisits = (lstuniquevisits_tot_today != null) ? (st_count_admin.TotalVisits + lstuniquevisits_tot_today.Select(x => x.Visits_today).Sum()) : st_count_admin.TotalVisits;
+                                st_count_admin.TotalVisits = (lstuniquevisits_tot != null) ? (totalvisits) : st_count_admin.TotalVisits;
                                 st_count_admin.NoVisitsTotal_Today = (novisitstotal);
                                 st_count_admin.VisitsPercent_Today = (st_count_admin.VisitsYesterday > 0 && st_count_admin.VisitsTotal_Today > 0) ? ((st_count_admin.VisitsTotal_Today - st_count_admin.VisitsYesterday) / (st_count_admin.VisitsYesterday)) : 0;
                                 st_count_admin.RevisitsPercent_Today = (st_count_admin.RevisitsTotal_Yesterday > 0 && st_count_admin.RevisitsTotal_Today > 0) ? ((st_count_admin.RevisitsTotal_Today - st_count_admin.RevisitsTotal_Yesterday) / (st_count_admin.RevisitsTotal_Yesterday)) : 0;
