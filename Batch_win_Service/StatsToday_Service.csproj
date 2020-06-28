@@ -122,77 +122,86 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="account.cs">
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticalModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalyticalModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticalModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnalyticalModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnalyticalModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="batchuploaddata.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="campaignhookurl.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="city_blocks_ipv4_geolite2.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="city_locations_geolite2.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="client.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="cookietable.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="errorlog.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="excluded_shorturl.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="feature.cs">
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="features_roles_mapping.cs">
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="freegeoipdata.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="hashidlist.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="hitnotify.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="locations_data.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="loginhistory.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="master_location.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="messagelink.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="riddata.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="role.cs">
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="shorturlclickreference.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="shorturldata.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="spGetUIDDATA_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="StatsTodayClass.cs" />
     <Compile Include="StatsToday_Service.cs">
@@ -211,19 +220,29 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="stat_counts.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tmptable.cs">
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tmp_rownum_update.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
     <Compile Include="uiddata.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>AnalyticalModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="AnalyticalModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AnalyticalModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AnalyticalModel.edmx.diagram">
+      <DependentUpon>AnalyticalModel.edmx</DependentUpon>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -244,13 +263,6 @@
     <None Include="bin\Release\MySqlBatch_win_Service.vshost.exe.manifest" />
     <None Include="bin\Release\StatsUpdate_win_Service.exe.config" />
     <None Include="bin\Release\StatUpdate_win_Service.vshost.exe.config" />
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -263,6 +275,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AnalyticalModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AnalyticalModel.edmx</DependentUpon>
+      <LastGenOutput>AnalyticalModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AnalyticalModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AnalyticalModel.edmx</DependentUpon>
+      <LastGenOutput>AnalyticalModel.cs</LastGenOutput>
+    </Content>
     <Content Include="bin\Debug\Batch_win_Service.exe" />
     <Content Include="bin\Debug\Batch_win_Service.pdb" />
     <Content Include="bin\Debug\Batch_win_Service.vshost.exe" />
@@ -293,16 +315,6 @@
     <Content Include="bin\Release\StatUpdate_win_Service.vshost.exe" />
     <Content Include="bin\Release\UAParser.dll" />
     <Content Include="bin\Release\UAParser.xml" />
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

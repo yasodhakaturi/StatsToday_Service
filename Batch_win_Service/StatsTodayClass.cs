@@ -30,7 +30,7 @@ namespace StatsToday_Service
     public class StatsModel_uniquevisits
     {
         public int uniquevists { get; set; }
-        
+        public int totalvisits { get; set; }
         public int? fk_rid { get; set; }
         public int? fk_clientid { get; set; }
     }
@@ -55,6 +55,8 @@ namespace StatsToday_Service
     public class StatsModel_uniqueusers
     {
         public int UniqueUsers { get; set; }
+
+        public int TotalUsers { get; set; }
         public int? fk_rid { get; set; }
         public int? fk_clientid { get; set; }
     }

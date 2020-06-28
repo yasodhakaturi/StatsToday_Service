@@ -50,15 +50,19 @@ namespace StatsToday_Service
         {
             try
             {
+                
                 //ErrorLogs.LogErrorData("test", "test");
                 shorturlclickreference shrt_clickref = new shorturlclickreference();
                 shorturlclickreference clickref = dc.shorturlclickreferences.Select(x => x).FirstOrDefault();
+                int days_diff = 0;
+                days_diff = (int)((DateTime.UtcNow.Date - clickref.UpdatedDate.Value.Date).TotalDays);
+                if (days_diff == 0)
+                {
                 int getnextshorturlid = 0;
-                //int getnextuserid = 0;
+                int getnextuserid = 0;
                 //List<StatsModel_visits> lstvisits = new List<StatsModel_visits>();
                 List<StatsModel_uniquevisits_Today> lstuniquevisits_tot_today = new List<StatsModel_uniquevisits_Today>();
                 List<StatsModel_uniquevisits> lstuniquevisits_tot = new List<StatsModel_uniquevisits>();
-                int days_diff =0;
                 int gettodayshorturlid = 0;
                 int gettodayuserid = 0;
                 if (clickref == null)
@@ -77,70 +81,72 @@ namespace StatsToday_Service
                 else
                     clickref = dc.shorturlclickreferences.Select(x => x).FirstOrDefault();
 
-               
-                int cntvisits = dc.shorturldatas.Where(x => x.PK_Shorturl > clickref.Ref_ShorturlClickID).ToList().Count();
-                if (cntvisits > 0)
-                {
 
-                    //int refvisitid = (int)clickref.Ref_ShorturlClickID;
-                    //getnextshorturlid = refvisitid + cntvisits;
-                    days_diff = (int)((DateTime.UtcNow.Date - clickref.UpdatedDate.Value.Date).TotalDays);
-                     //ErrorLogs.LogErrorData("days count", days_diff.ToString());
-                    if (days_diff == 0)
+                int cntvisits = dc.shorturldatas.Where(x => x.PK_Shorturl > clickref.Ref_ShorturlClickID).ToList().Count();
+                ///campaigns -- start
+                int cntusers = dc.uiddatas.Where(x => x.PK_Uid >= clickref.Ref_UsersID).ToList().Count();
+                    if (cntvisits > 0)
                     {
+
+                        //int refvisitid = (int)clickref.Ref_ShorturlClickID;
+                        //getnextshorturlid = refvisitid + cntvisits;
+
+                        //ErrorLogs.LogErrorData("days count", days_diff.ToString());
+                        //if (days_diff == 0)
+                        //{
                         getnextshorturlid = dc.shorturldatas.Max(x => x.PK_Shorturl);
                         clickref.Ref_ShorturlClickID = getnextshorturlid;
                         clickref.UpdatedDate = DateTime.UtcNow;
                         dc.SaveChanges();
-                        //lstvisits = dc.shorturldatas.AsEnumerable()
-                        //   .Where(x => x.PK_Shorturl > refvisitid && x.CreatedDate.Value.Date == DateTime.UtcNow.Date)
-                        //   .GroupBy(x => x.FK_RID)
-                        //   .Select(res => new StatsModel_visits()
-                        //   {
-                        //       Visits_today = res.Select(x => x.FK_Uid).ToList().Count(),
-                        //       //uniqueVisits_today = res.Select(x => x.FK_Uid).Distinct().ToList().Count(),
-                        //       //Todays_ReVisitCount = (res.Select(x => x.FK_Uid).Count()) - (res.Select(x => x.FK_Uid).Distinct().Count()),
-                        //       fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
-                        //       fk_clientid=res.Select(x=>x.FK_ClientID).FirstOrDefault()
-                        //       //fk_uid=res.Select(x=>x.FK_Uid).Distinct().ToList()
-                        //   }).ToList();
+                        try
+                        {
+                            using (var dc1 = new shortenurlEntities())
+                            {
+                                dc1.Database.CommandTimeout = 2 * 60;
+                                lstuniquevisits_tot_today = (from s in dc1.shorturldatas
+                                                                           .AsEnumerable()
+                                                                 //join st in lstvisits on s.FK_RID equals st.fk_rid
+                                                             where s.CreatedDate != null && s.CreatedDate.Value.Date == DateTime.UtcNow.Date
+                                                             group s by s.FK_RID into res
+                                                             select new StatsModel_uniquevisits_Today()
+                                                             {
+                                                                 fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
+                                                                 fk_clientid = res.Select(x => x.FK_ClientID).FirstOrDefault(),
+                                                                 Visits_today = res.Select(x => x.FK_Uid).ToList().Count(),
+                                                                 Todays_ReVisitCount = (res.Select(x => x.FK_Uid).Count()) - (res.Select(x => x.FK_Uid).Distinct().Count()),
+                                                                 uniqueVisits_today = res.Select(x => x.FK_Uid).Distinct().ToList().Count()
+                                                                 //Todays_ReVisitCount = (res.Where(y => y.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(x => x.FK_Uid).Count()) - (res.Where(y => y.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(x => x.FK_Uid).Distinct().Count()),
+                                                                 //uniqueVisits_today = res.Where(y => y.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(x => x.FK_Uid).Distinct().ToList().Count()
+                                                             }).ToList();
+                                lstuniquevisits_tot = (from s in dc1.shorturldatas
+                                                                               .AsEnumerable()
+                                                       join st in lstuniquevisits_tot_today on s.FK_RID equals st.fk_rid
 
-                        lstuniquevisits_tot_today = (from s in dc.shorturldatas
-                                                                   .AsEnumerable()
-                                                     //join st in lstvisits on s.FK_RID equals st.fk_rid
-                                                     where s.CreatedDate != null && s.CreatedDate.Value.Date == DateTime.UtcNow.Date
-                                                     group s by s.FK_RID into res
-                                                     select new StatsModel_uniquevisits_Today()
-                                                     {
-                                                         fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
-                                                         fk_clientid = res.Select(x => x.FK_ClientID).FirstOrDefault(),
-                                                         Visits_today = res.Select(x => x.FK_Uid).ToList().Count(),
-                                                         Todays_ReVisitCount = (res.Select(x => x.FK_Uid).Count()) - (res.Select(x => x.FK_Uid).Distinct().Count()),
-                                                         uniqueVisits_today = res.Select(x => x.FK_Uid).Distinct().ToList().Count()
-                                                         //Todays_ReVisitCount = (res.Where(y => y.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(x => x.FK_Uid).Count()) - (res.Where(y => y.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(x => x.FK_Uid).Distinct().Count()),
-                                                         //uniqueVisits_today = res.Where(y => y.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(x => x.FK_Uid).Distinct().ToList().Count()
-                                                     }).ToList();
-                        lstuniquevisits_tot = (from s in dc.shorturldatas
-                                                                       .AsEnumerable()
-                                               join st in lstuniquevisits_tot_today on s.FK_RID equals st.fk_rid
+                                                       group s by s.FK_RID into res
+                                                       select new StatsModel_uniquevisits()
+                                                       {
+                                                           fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
+                                                           fk_clientid = res.Select(x => x.FK_ClientID).FirstOrDefault(),
+                                                           uniquevists = res.Select(x => x.FK_Uid).Distinct().ToList().Count(),
+                                                           totalvisits = res.Select(x => x.FK_Uid).ToList().Count()
 
-                                               group s by s.FK_RID into res
-                                               select new StatsModel_uniquevisits()
-                                               {
-                                                   fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
-                                                   fk_clientid = res.Select(x => x.FK_ClientID).FirstOrDefault(),
-                                                   uniquevists = res.Select(x => x.FK_Uid).Distinct().ToList().Count()
+                                                       }).ToList();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
 
-                                               }).ToList();
-
+                            ErrorLogs.LogErrorData("StatsToday_Service,in visit query" + ex.InnerException + ex.StackTrace, ex.Message);
+                        }
                         foreach (StatsModel_uniquevisits_Today vst in lstuniquevisits_tot_today)
                         {
                             //ErrorLogs.LogErrorData("StatsToday_Service "+"FK_RID ="+vst.fk_rid +" visits : "  +vst.Visits_today.ToString() , DateTime.UtcNow.Date.ToString());
                             stat_counts st_count = new stat_counts();
-                            int uniquevists = 0; int revisitcount = 0; int uniquevistis_today = 0; int todayvisitcount = 0;
+                            int uniquevists = 0; int revisitcount = 0; int uniquevistis_today = 0; int todayvisitcount = 0; int total_visits = 0;
                             uniquevists = lstuniquevisits_tot.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.uniquevists).SingleOrDefault();
                             revisitcount = lstuniquevisits_tot_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.Todays_ReVisitCount).SingleOrDefault();
                             uniquevistis_today = lstuniquevisits_tot_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.uniqueVisits_today).SingleOrDefault();
+                            total_visits = lstuniquevisits_tot.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.totalvisits).SingleOrDefault();
                             todayvisitcount = lstuniquevisits_tot_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.Visits_today).SingleOrDefault();
                             //int novisits = lstnovisits_today.Where(x => x.fk_rid == vst.fk_rid).Select(x => x.Novists_today).SingleOrDefault();
                             st_count = dc.stat_counts.Where(x => x.FK_Rid == vst.fk_rid).Select(y => y).SingleOrDefault();
@@ -155,7 +161,8 @@ namespace StatsToday_Service
 
                                 st_count.UniqueVisits = (uniquevists > 0) ? (uniquevists) : (st_count.UniqueVisits);
                                 st_count.UniqueVisitsToday = (uniquevistis_today > 0) ? (uniquevistis_today) : (st_count.UniqueVisitsToday);
-                                st_count.TotalVisits = (vst.Visits_today > 0) ? (st_count.TotalVisits + vst.Visits_today) : st_count.TotalVisits;
+                                //st_count.TotalVisits = (vst.Visits_today > 0) ? (st_count.TotalVisits + vst.Visits_today) : st_count.TotalVisits;
+                                st_count.TotalVisits = (total_visits > 0) ? (total_visits) : (st_count.TotalVisits);
                                 //st_count.NoVisitsTotal_Today = (st_count.UniqueVisitsToday > 0) ? (st_count.UsersToday - st_count.UniqueVisitsToday) : st_count.NoVisitsTotal_Today;
                                 st_count.NoVisitsTotal_Today = (st_count.UniqueVisitsToday > 0 && st_count.UsersToday > 0 && (st_count.NoVisitsTotal_Today != (st_count.UsersToday - st_count.UniqueVisitsToday))) ? Math.Abs((int)(st_count.UsersToday - st_count.UniqueVisitsToday)) : st_count.NoVisitsTotal_Today;
                                 st_count.RevisitsPercent_Today = (st_count.RevisitsTotal_Yesterday > 0 && st_count.RevisitsTotal_Today > 0) ? ((st_count.RevisitsTotal_Today - st_count.RevisitsTotal_Yesterday) / (st_count.RevisitsTotal_Yesterday)) : 0;
@@ -167,12 +174,17 @@ namespace StatsToday_Service
                             }
                         }
                         ///admin case
-                        List<int> clientid_list = dc.clients.Where(x => x.Role == "Admin").Select(x => x.PK_ClientID).ToList();
+                        //List<int> clientid_list = dc.clients.Where(x => x.Role == "Admin").Select(x => x.PK_ClientID).ToList();
+                        List<int> clientid_list = (from c in dc.clients
+                                                   join r1 in dc.roles on c.FK_RoleId equals r1.PK_RoleId
+                                                   where r1.RoleName.ToLower() == "superadmin"
+                                                   select c.PK_ClientID).ToList();
                         //if (st_count_admin_list.Count > 0)
                         //    {
                         int? VisitsToday = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.VisitsToday).Sum();
                         int? revisitstotal = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.RevisitsTotal_Today).Sum();
                         int? uniquevisits = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.UniqueVisits).Sum();
+                        int? totalvisits = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.TotalVisits).Sum();
                         int? uniquevisitstoday = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.UniqueVisitsToday).Sum();
                         int? novisitstotal = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(x => x.NoVisitsTotal_Today).Sum();
                         foreach (int id in clientid_list)
@@ -190,8 +202,8 @@ namespace StatsToday_Service
                                 //st_count_admin.UniqueVisits = (lstuniquevisits_tot != null) ? (st_count_admin.UniqueVisits + lstuniquevisits_tot.Select(x => x.uniquevists).Sum()) : st_count_admin.UniqueVisits;
                                 //st_count_admin.UniqueVisitsToday = (lstvisits != null) ? (st_count_admin.UniqueVisitsToday + lstvisits.Select(x => x.uniqueVisits_today).Sum()) : st_count_admin.UniqueVisitsToday;
 
-                                st_count_admin.TotalVisits = (lstuniquevisits_tot_today != null) ? (st_count_admin.TotalVisits + lstuniquevisits_tot_today.Select(x => x.Visits_today).Sum()) : st_count_admin.TotalVisits;
-
+                                //st_count_admin.TotalVisits = (lstuniquevisits_tot_today != null) ? (st_count_admin.TotalVisits + lstuniquevisits_tot_today.Select(x => x.Visits_today).Sum()) : st_count_admin.TotalVisits;
+                                st_count_admin.TotalVisits = (lstuniquevisits_tot != null) ? (totalvisits) : st_count_admin.TotalVisits;
                                 st_count_admin.NoVisitsTotal_Today = (novisitstotal);
                                 st_count_admin.VisitsPercent_Today = (st_count_admin.VisitsYesterday > 0 && st_count_admin.VisitsTotal_Today > 0) ? ((st_count_admin.VisitsTotal_Today - st_count_admin.VisitsYesterday) / (st_count_admin.VisitsYesterday)) : 0;
                                 st_count_admin.RevisitsPercent_Today = (st_count_admin.RevisitsTotal_Yesterday > 0 && st_count_admin.RevisitsTotal_Today > 0) ? ((st_count_admin.RevisitsTotal_Today - st_count_admin.RevisitsTotal_Yesterday) / (st_count_admin.RevisitsTotal_Yesterday)) : 0;
@@ -199,205 +211,258 @@ namespace StatsToday_Service
                                 dc.SaveChanges();
                             }
                         }
+
                     }
-                    else
-                        Stats_update(days_diff);
-
-                        //getnextshorturlid = dc.shorturldatas.Any() ? dc.shorturldatas.Max(x => x.PK_Shorturl) : 0;
-                        //if (cntvisits > 0)
-                        //    clickref.Ref_ShorturlClickID = getnextshorturlid;
-
-                        //dc.SaveChanges();
-                    }
-                    /// camapigns ----- start
-
-                    //var novisitcampaigns = ((from r in dc.riddatas
-                    //                               //.AsEnumerable()
-                    //                               where r.PK_Rid > clickref.Ref_UsersID
-                    //                               select (int)r.PK_Rid).ToList()).Except((from s in dc.shorturldatas
-                    //                                                                 //.AsEnumerable()
-                    //                                                                 where s.PK_Shorturl > clickref.Ref_ShorturlClickID
-                    //                                                                 select (int)s.FK_RID).Distinct().ToList());
-
-                    // if(novisitcampaigns.Count()>0)
-                    // {
-                    //     int cntcamp = dc.riddatas.Where(x => x.PK_Rid > clickref.Ref_UsersID).Count();
-                    //     clickref.Ref_UsersID = clickref.Ref_UsersID + cntcamp;
-                    //     dc.SaveChanges();
-
-                    //     List<int> no_vist_camp_list = novisitcampaigns.ToList();
-                    //     foreach (int i in no_vist_camp_list)
-                    //     {
-                    //         stat_counts st_today_novisitcount = new stat_counts();
-                    //          st_today_novisitcount = dc.stat_counts.Where(x => x.FK_Rid == i).Select(y => y).SingleOrDefault();
-                    //          ErrorLogs.LogErrorData("StatsToday_Service NoVisitsTotal_Today" + st_today_novisitcount.UsersToday, i.ToString());
-
-                    //         st_today_novisitcount.NoVisitsTotal_Today = st_today_novisitcount.UsersToday;
-                    //         dc.SaveChanges();
-                    //     }
-                    //     stat_counts st_admin_today_novisitcount = dc.stat_counts.Where(x => x.FK_Rid == 0).Select(y => y).SingleOrDefault();
-                    //     st_admin_today_novisitcount.NoVisitsTotal_Today = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.NoVisitsTotal_Today).Sum();
-                    //     dc.SaveChanges();
-                    // }
-
-                    //int cntusers =  dc.uiddatas.Where(x => x.PK_Uid > clickref.Ref_UsersID).ToList().Count();
-
-                    //if (cntusers > 0)
-                    //{
-
-                    //    int refurserid = (int)clickref.Ref_UsersID;
-                    //    getnextuserid = refurserid + cntusers;
-
-                    //    clickref.Ref_UsersID = getnextuserid;
-                    //    dc.SaveChanges();
-                    //    //DateTime? dt_max = dc.uiddatas.Where(x => x.PK_Uid > clickref.Ref_UsersID).Select(y => y.CreatedDate).Max();
-                    //    //ErrorLogs.LogErrorData("dt_max = " +dt_max.Value.AddMinutes(1),"DateTime.UtcNow ="+DateTime.UtcNow)
-                    //    //if(dt_max.Value.AddMinutes(1) < DateTime.UtcNow)
-                    //    //{
-                    //    List<StatsModel_users> lstusers = dc.uiddatas.AsEnumerable()
-                    //         .Where(x => x.PK_Uid > refurserid && x.CreatedDate.Value.Date == DateTime.UtcNow.Date)
-                    //         .GroupBy(x => x.FK_RID)
-                    //         .Select(res => new StatsModel_users()
-                    //         {
-                    //             Users_Today = res.Select(x => x.MobileNumber).Count(),
-                    //             //UniqueUsers_Today = res.Select(x => x.MobileNumber).Distinct().ToList().Count(),
-                    //             fk_rid = res.Select(x => x.FK_RID).FirstOrDefault()
-                    //         }).ToList();
-                    //    //List<int?> list_fkrid = dc.uiddatas.Where(x => x.PK_Uid > refurserid).Select(y => y.FK_RID).Distinct().ToList();
-
-                    //   foreach (StatsModel_users i in lstusers)
-                    //        //foreach (int? i in list_fkrid)
-                    //        {
-                    //            stat_counts novisit_st_count = dc.stat_counts.Where(x => x.FK_Rid == i.fk_rid).Select(y => y).SingleOrDefault();
-                    //            //novisit_st_count.NoVisitsTotal_Today =(novisit_st_count.UniqueVisitsToday ==0) ? Math.Abs(i.Users_Today) - Math.Abs((int)novisit_st_count.UniqueVisitsToday);
-                    //            novisit_st_count.NoVisitsTotal_Today = (novisit_st_count.UniqueVisitsToday == 0) ? (i.Users_Today) : novisit_st_count.NoVisitsTotal_Today;
-                    //       dc.SaveChanges();
-                    //            ErrorLogs.LogErrorData("StatsToday_Service Novisit_st_count = " + novisit_st_count.NoVisitsTotal_Today, " UsersToday = " + novisit_st_count.UsersToday + " UniqueVisitsToday = " + novisit_st_count.UniqueVisitsToday);
-
-                    //        }
-                    //        stat_counts novisit_st_count_admin = dc.stat_counts.Where(x => x.FK_Rid == 0).Select(y => y).SingleOrDefault();
-                    //        //novisit_st_count_admin.NoVisitsTotal_Today = (novisit_st_count_admin.UsersToday) - novisit_st_count_admin.UniqueVisitsToday;
-                    //        novisit_st_count_admin.NoVisitsTotal_Today = (lstusers.Select(x=>x.Users_Today).Sum()) - novisit_st_count_admin.UniqueVisitsToday;
-
-                    //    dc.SaveChanges();
-
-
-                    //    //}
-                    //}
-
-                    ///campaigns --- end
-                    ///
-                    /////users --s start
-                    //int cntusers =  dc.uiddatas.Where(x => x.PK_Uid > clickref.Ref_UsersID).ToList().Count();
-
-                    //if (cntvisits > 0 || cntusers > 0)
-                    //{
-
-                    //int getnextshorturlid = 0; int getnextuserid = 0;
-                    //List<StatsModel_visits> lstvisits = new List<StatsModel_visits>();
-                    //List<StatsModel_users> lstusers = new List<StatsModel_users>();
-                    //List<StatsModel_uniquevisits_Today> lstuniquevisits_tot_today = new List<StatsModel_uniquevisits_Today>();
-                    //List<StatsModel_uniquevisits> lstuniquevisits_tot = new List<StatsModel_uniquevisits>();
-                    //List<StatsModel_uniqueusers> lstuniqueusers_tot = new List<StatsModel_uniqueusers>();
-                    //List<StatsModel_uniqueusers_today> lstuniqueusers_tot_today = new List<StatsModel_uniqueusers_today>();
-                    //if (cntusers > 0)
-                    //{
-                    //    ErrorLogs.LogErrorData("Ref_ShorturlClickID = " + clickref.Ref_ShorturlClickID, "Ref_UsersID = " + clickref.Ref_UsersID);
-                    //    ErrorLogs.LogErrorData("cntvisits = " + cntvisits, "cntusers = " + cntusers);
-                    //    int refurserid = (int)clickref.Ref_UsersID;
-                    //    getnextuserid = refurserid + cntusers;
-
-                    //    clickref.Ref_UsersID = getnextuserid;
-                    //    dc.SaveChanges();
-                    //    lstusers = dc.uiddatas.AsEnumerable()
-                    //        .Where(x => x.PK_Uid > refurserid && x.CreatedDate.Value.Date == DateTime.UtcNow.Date)
-                    //        .GroupBy(x => x.FK_RID)
-                    //        .Select(res => new StatsModel_users()
-                    //        {
-                    //            Users_Today = res.Select(x => x.MobileNumber).Count(),
-                    //            UniqueUsers_Today = res.Select(x => x.MobileNumber).Distinct().ToList().Count(),
-                    //            fk_rid = res.Select(x => x.FK_RID).FirstOrDefault()
-                    //        }).ToList();
-
-                    //    lstuniqueusers_tot = (from s in dc.uiddatas
-                    //                                                .AsEnumerable()
-                    //                                join st in lstusers on s.FK_RID equals st.fk_rid
-                    //                                //where s.CreatedDate.Value.Date == DateTime.UtcNow.Date
-                    //                                group s by s.FK_RID into res
-                    //                                select new StatsModel_uniqueusers()
-                    //                                {
-                    //                                    fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
-                    //                                    UniqueUsers = res.Select(x => x.MobileNumber).Distinct().ToList().Count()
-                    //                                }).ToList();
-                    //    foreach (StatsModel_users users in lstusers)
-                    //    {
-                    //        stat_counts st_count = new stat_counts(); int uniqueusers = 0; 
-                    //        uniqueusers = lstuniqueusers_tot.Where(x => x.fk_rid == users.fk_rid).Select(x => x.UniqueUsers).SingleOrDefault();
-                    //        //uniqueusers_today = lstuniqueusers_tot_today.Where(x => x.fk_rid == users.fk_rid).Select(x => x.UniqueUsers_Today).SingleOrDefault();
-                    //        st_count = dc.stat_counts.Where(x => x.FK_Rid == users.fk_rid).Select(y=>y).SingleOrDefault();
-                    //        if (st_count != null)
-                    //        {
-                    //            st_count.UsersToday = (users.Users_Today > 0) ? (st_count.UsersToday + users.Users_Today) : st_count.UsersToday;
-                    //            st_count.UrlTotal_Today = st_count.UsersToday;
-                    //            //st_count.UniqueUsersToday = (users.UniqueUsers_Today > 0) ? (st_count.UniqueUsersToday + users.UniqueUsers_Today) : st_count.UniqueUsersToday;
-                    //            st_count.UniqueUsers = (uniqueusers > 0) ? (uniqueusers) : st_count.UniqueUsers;
-                    //            st_count.UniqueUsersToday = (users.UniqueUsers_Today > 0) ? (st_count.UniqueUsersToday + users.UniqueUsers_Today)  : st_count.UniqueUsersToday;
-                    //            st_count.TotalUsers = (users.Users_Today > 0) ? (st_count.TotalUsers + users.Users_Today) : st_count.TotalUsers;
-                    //            st_count.UrlPercent_Today = (st_count.UsersYesterday == 0) ? 0 : ((st_count.UsersToday - st_count.UsersYesterday) / (st_count.UsersYesterday));
-                    //            if (cntvisits == 0)
-                    //                st_count.NoVisitsTotal_Today = st_count.TotalUsers - st_count.UniqueVisitsToday;
-                    //            dc.SaveChanges();
-                    //            //ErrorLogs.LogErrorData("unique users = " + st_count.UniqueUsers + "fk_rid = " + users.fk_rid +"total users = "+lstusers.Count(), "UniqueUsersToday = " + st_count.UniqueUsersToday.ToString() + "fk_rid = " + users.fk_rid);
-
-                    //        }
-                    //    }
-                    //    //for admin
-                    //    stat_counts st_count_admin = dc.stat_counts.Where(x => x.FK_Rid == 0).SingleOrDefault();
-                    //    if (st_count_admin != null)
-                    //    {
-                    //        //st_count_admin.UsersToday = (lstusers != null) ? (st_count_admin.UsersToday + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.UsersToday;
-                    //        ////st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (lstuniqueusers_tot.Select(x => x.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
-                    //        //st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
-                    //        //st_count_admin.UniqueUsersToday = (lstusers != null) ? (st_count_admin.UniqueUsersToday + lstusers.Select(y => y.UniqueUsers_Today).Sum()) : st_count_admin.UniqueUsersToday;
-                    //        //st_count_admin.TotalUsers = (lstusers != null) ? (st_count_admin.TotalUsers + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.TotalUsers;
-                    //        //st_count_admin.UrlTotal_Today = st_count_admin.TotalUsers;
-
-                    //        st_count_admin.UsersToday = (lstusers != null) ? (st_count_admin.UsersToday + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.UsersToday;
-                    //        //st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (lstuniqueusers_tot.Select(x => x.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
-                    //        st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
-                    //        st_count_admin.UniqueUsersToday = (lstusers != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsersToday).Sum()) : st_count_admin.UniqueUsersToday;
-                    //        st_count_admin.TotalUsers = (lstusers != null) ? (st_count_admin.TotalUsers + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.TotalUsers;
-                    //        st_count_admin.UrlTotal_Today = st_count_admin.UsersToday;
-                    //        st_count_admin.UrlPercent_Today = (st_count_admin.UsersYesterday == 0) ? 0 : ((st_count_admin.UsersToday - st_count_admin.UsersYesterday) / (st_count_admin.UsersYesterday));
-
-                    //        if (cntvisits == 0)
-                    //            st_count_admin.NoVisitsTotal_Today =  (st_count_admin.TotalUsers - st_count_admin.UniqueVisitsToday) ;
-                    //        dc.SaveChanges();
-                    //        //st_count_admin.UsersToday = (lstusers != null) ? (st_count_admin.UsersToday + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.UsersToday;
-                    //        //st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
-                    //        //st_count_admin.UniqueUsersToday = (lstusers != null) ? (st_count_admin.UniqueUsersToday + lstusers.Select(x => x.UniqueUsers_Today).Sum()) : st_count_admin.UniqueUsersToday;
-                    //        //st_count_admin.TotalUsers = (lstusers != null) ? (st_count_admin.TotalUsers + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.TotalUsers;
-
-
-
-                    //        //ErrorLogs.LogErrorData("StatsToday_Service visitis today st_count_admin " + st_count_admin.VisitsToday, lstvisits.Select(x => x.Visits_today).Sum().ToString());
-                    //       }
-                    //    //getnextuserid = dc.uiddatas.Any() ? dc.uiddatas.Max(x => x.PK_Uid) : 0;
-                    //    //if (cntusers > 0)
-                    //    //    clickref.Ref_UsersID = getnextuserid;
-                    //    //dc.SaveChanges();
-                    //}
-
-                    //    stat_counts st_count = new stat_counts();     
-                    //st_count = dc.stat_counts.Where(x => x.FK_Rid == users.fk_rid).Select(y => y).SingleOrDefault();
-                    //stat_counts st_count_admin = dc.stat_counts.Where(x => x.FK_Rid == 0).SingleOrDefault();
-                    //if (cntvisits == 0)
-                    //        st_count_admin.NoVisitsTotal_Today = (st_count_admin.TotalUsers - st_count_admin.UniqueVisitsToday);
-                    //    dc.SaveChanges();   
-                    ////////users --end
                 
-            }
+                if ( cntusers > 0)
+                {
+                    stat_counts st_count = new stat_counts();
+                    stat_counts st_count_admin = new stat_counts();
+                    // int getnextshorturlid = 0; int getnextuserid = 0;
+                    //List<StatsModel_visits> lstvisits = new List<StatsModel_visits>();
+                    StatsModel_users lstusers = new StatsModel_users();
+                    StatsModel_uniqueusers lstuniqueusers_tot = new StatsModel_uniqueusers();
+                    //List<StatsModel_uniqueusers_today> lstuniqueusers_tot_today = new List<StatsModel_uniqueusers_today>();
+                    if (cntusers > 0)
+                    {
 
+                        int refurserid = (int)clickref.Ref_UsersID;
+                        getnextuserid = refurserid + cntusers;
+                        clickref.Ref_UsersID = getnextuserid;
+                        clickref.UpdatedDate = DateTime.UtcNow;
+                        dc.SaveChanges();
+                        List<int?> campaigns_list = dc.uiddatas.Where(x => x.PK_Uid >= refurserid).Select(y => y.FK_RID).Distinct().ToList();
+                        foreach (int? rid in campaigns_list)
+                        {
+                            int uniqueusers = 0; int uniqueusers_today = 0; int userstoday = 0; int totalusers = 0;
+                            DateTime? dttime = DateTime.UtcNow.Date;
+                            //  ErrorLogs.LogErrorData("StatsToday_Service , campaigns sectionin loop", "rid="+rid);
+                            //var lstuiddata = dc.uiddatas.Where(x => x.FK_RID == rid).Select(y => new { y.PK_Uid, y.MobileNumber, y.CreatedDate }).ToList();
+                            stat_counts objs = dc.stat_counts.Where(x => x.FK_Rid == rid).Select(y => y).SingleOrDefault();
+                            //lstusers = (from u in dc.uiddatas
+                            //            .AsEnumerable()
+                            //            where u.FK_RID == rid && u.CreatedDate.Value.Date == DateTime.UtcNow.Date
+                            //            group u by u.FK_RID into res
+                            //            select new StatsModel_users()
+                            //            {
+                            //                Users_Today = res.Select(x => x.MobileNumber).Count(),
+                            //                UniqueUsers_Today = res.Select(x => x.MobileNumber).Distinct().Count()
+                            //                //fk_rid = u.FK_RID
+                            //            }).SingleOrDefault();
+                            //lstuniqueusers_tot = (from u in dc.uiddatas
+                            //                      where u.FK_RID == rid
+                            //                      group u by u.FK_RID into res
+                            //                      select new StatsModel_uniqueusers()
+                            //                      {
+                            //                          UniqueUsers = res.Select(x => x.MobileNumber).Distinct().Count(),
+                            //                          TotalUsers = res.Select(x => x.MobileNumber).Count(),
+                            //                          //fk_rid = u.FK_RID
+                            //                      }).SingleOrDefault();
+
+                            //ErrorLogs.LogErrorData("StatsToday_Service ,rid=" + rid, "");
+                            using (var dc1 = new shortenurlEntities())
+                            {
+                                dc1.Database.CommandTimeout = 2 * 60;
+                                totalusers = dc1.uiddatas.Where(x => x.FK_RID == rid).Select(y => y.MobileNumber).Count();
+                                uniqueusers = dc1.uiddatas.Where(x => x.FK_RID == rid).Select(y => y.MobileNumber).Distinct().Count();
+                                //userstoday = dc1.uiddatas.AsEnumerable().Where(x => x.FK_RID == rid && x.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(y => y.MobileNumber).Count();
+
+                                getcampaigntodaycounts(rid, out userstoday, out uniqueusers_today);
+
+                                //userstoday = (from s in dc1.uiddatas
+                                //              .AsEnumerable()
+                                //                  //join st in lstvisits on s.FK_RID equals st.fk_rid
+                                //              where s.FK_RID==rid && s.CreatedDate != null && s.CreatedDate.Value.Date == DateTime.UtcNow.Date
+                                //              //group s by s.FK_RID into res
+                                //              select s.MobileNumber).ToList().Count();
+
+                                //ErrorLogs.LogErrorData("StatsToday_Service ,userstoday=", userstoday.ToString());
+                                ////uniqueusers_today = dc1.uiddatas.AsEnumerable().Where(x => x.FK_RID == rid && x.CreatedDate.Value.Date == DateTime.UtcNow.Date).Select(y => y.MobileNumber).Distinct().Count();
+                                //userstoday = (from s in dc1.uiddatas
+                                //             .AsEnumerable()
+                                //                  //join st in lstvisits on s.FK_RID equals st.fk_rid
+                                //              where s.CreatedDate != null && s.CreatedDate.Value.Date == DateTime.UtcNow.Date
+                                //              //group s by s.FK_RID into res
+                                //              select s.MobileNumber).Distinct().Count();
+
+                                //ErrorLogs.LogErrorData("StatsToday_Service ,uniqueusers_today=", uniqueusers_today.ToString());
+
+                                objs.TotalUsers = totalusers;
+                                objs.UniqueUsers = uniqueusers;
+                                objs.UsersToday = userstoday;
+                                objs.UniqueUsersToday = uniqueusers_today;
+                                objs.UrlTotal_Today = objs.UsersToday;
+                                objs.UrlPercent_Today = (objs.UsersYesterday == 0) ? 0 : ((objs.UsersToday - objs.UsersYesterday) / (objs.UsersYesterday));
+                                //if ((objs.UniqueVisitsToday > 0 && ((dc1.shorturldatas.Max(x => x.PK_Shorturl)) > (dc1.shorturlclickreferences.Select(x => x.Ref_ShorturlClickID).FirstOrDefault())) && (objs.NoVisitsTotal_Today != (objs.UsersToday - objs.UniqueVisitsToday))))
+                                    objs.NoVisitsTotal_Today = userstoday - objs.UniqueVisitsToday;
+                                //else if (objs.UniqueVisitsToday == 0)
+                                //    objs.NoVisitsTotal_Today = objs.UsersToday;
+                                //else
+                                //    objs.NoVisitsTotal_Today = objs.NoVisitsTotal_Today;
+                                dc.SaveChanges();
+                            }
+                        }
+
+                        //List<int> adminids = dc.clients.Where(x => x.Role == "admin").Select(x => x.PK_ClientID).ToList();
+                        List<int> adminids = (from c in dc.clients
+                                              join r1 in dc.roles on c.FK_RoleId equals r1.PK_RoleId
+                                              where r1.RoleName.ToLower() == "superadmin"
+                                              select c.PK_ClientID).ToList();
+                        foreach (int adminid in adminids)
+                        {
+                            stat_counts objadmin = dc.stat_counts.Where(x => x.FK_Rid == 0 && x.FK_ClientID == adminid).Select(y => y).SingleOrDefault();
+                            if (objadmin != null)
+                            {
+                                ErrorLogs.LogErrorData("StatsToday_Service,starting of campaigncounts admin case", "");
+                                objadmin.TotalUsers = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.TotalUsers).Sum();
+                                objadmin.UniqueUsers = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsers).Sum();
+                                objadmin.UsersToday = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UsersToday).Sum();
+                                objadmin.UniqueUsersToday = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsersToday).Sum();
+                                objadmin.UrlTotal_Today = objadmin.UsersToday;
+                                objadmin.UrlPercent_Today = (objadmin.UsersYesterday == 0) ? 0 : ((objadmin.UsersToday - objadmin.UsersYesterday) / (objadmin.UsersYesterday));
+                                objadmin.NoVisitsTotal_Today = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.NoVisitsTotal_Today).Sum();
+                                //if ((objadmin.UniqueVisitsToday > 0 && ((dc.shorturldatas.Max(x => x.PK_Shorturl)) > (dc.shorturlclickreferences.Select(x => x.Ref_ShorturlClickID).FirstOrDefault())) && (objadmin.NoVisitsTotal_Today != (objadmin.UsersToday - objadmin.UniqueVisitsToday))))
+                                //    objadmin.NoVisitsTotal_Today = objadmin.UsersToday - objadmin.UniqueVisitsToday;
+                                //else if (objadmin.UniqueVisitsToday == 0)
+                                //    objadmin.NoVisitsTotal_Today = objadmin.UsersToday;
+                                //else
+                                //    objadmin.NoVisitsTotal_Today = objadmin.NoVisitsTotal_Today;
+                                ErrorLogs.LogErrorData("StatsToday_Service,before saving of campaigncounts admin case", "");
+                                dc.SaveChanges();
+                            }
+                        }
+                    }
+                }
+                //if (cntvisits > 0 || cntusers > 0)
+                //{
+                //    stat_counts st_count = new stat_counts();
+                //    stat_counts st_count_admin = new stat_counts();
+                //    // int getnextshorturlid = 0; int getnextuserid = 0;
+                //    //List<StatsModel_visits> lstvisits = new List<StatsModel_visits>();
+                //    List<StatsModel_users> lstusers = new List<StatsModel_users>();
+                //    //List<StatsModel_uniquevisits_Today> lstuniquevisits_tot_today = new List<StatsModel_uniquevisits_Today>();
+                //    //List<StatsModel_uniquevisits> lstuniquevisits_tot = new List<StatsModel_uniquevisits>();
+                //    List<StatsModel_uniqueusers> lstuniqueusers_tot = new List<StatsModel_uniqueusers>();
+                //    //List<StatsModel_uniqueusers_today> lstuniqueusers_tot_today = new List<StatsModel_uniqueusers_today>();
+                //    if (cntusers > 0)
+                //    {
+                //        //ErrorLogs.LogErrorData("Ref_ShorturlClickID = " + clickref.Ref_ShorturlClickID, "Ref_UsersID = " + clickref.Ref_UsersID);
+                //        //ErrorLogs.LogErrorData("cntvisits = " + cntvisits, "cntusers = " + cntusers);
+                //        int refurserid = (int)clickref.Ref_UsersID;
+                //        getnextuserid = refurserid + cntusers;
+
+                //        clickref.Ref_UsersID = getnextuserid;
+                //        dc.SaveChanges();
+                //        lstusers = dc.uiddatas
+                //            .AsEnumerable()
+                //            .Where(x => x.PK_Uid >= refurserid && x.CreatedDate.Value.Date == DateTime.UtcNow.Date)
+                //            .GroupBy(x => x.FK_RID)
+                //            .Select(res => new StatsModel_users()
+                //            {
+                //                Users_Today = res.Select(x => x.MobileNumber).Count(),
+                //                UniqueUsers_Today = res.Select(x => x.MobileNumber).Distinct().ToList().Count(),
+                //                fk_rid = res.Select(x => x.FK_RID).FirstOrDefault()
+                //            }).ToList();
+
+                //        lstuniqueusers_tot = (from s in dc.uiddatas
+                //                              .AsEnumerable()
+                //                              join st in lstusers on s.FK_RID equals st.fk_rid
+                //                              //where s.CreatedDate.Value.Date == DateTime.UtcNow.Date
+                //                              group s by s.FK_RID into res
+                //                              select new StatsModel_uniqueusers()
+                //                              {
+                //                                  fk_rid = res.Select(x => x.FK_RID).FirstOrDefault(),
+                //                                  UniqueUsers = res.Select(x => x.MobileNumber).Distinct().ToList().Count(),
+                //                                  TotalUsers = res.Select(x => x.MobileNumber).ToList().Count()
+                //                              }).ToList();
+                //        foreach (StatsModel_users users in lstusers)
+                //        {
+
+                //            int uniqueusers = 0; int uniqueusers_today = 0; int totalusers = 0; int userstoday = 0;
+                //            uniqueusers = lstuniqueusers_tot.Where(x => x.fk_rid == users.fk_rid).Select(x => x.UniqueUsers).SingleOrDefault();
+                //            totalusers = lstuniqueusers_tot.Where(x => x.fk_rid == users.fk_rid).Select(x => x.TotalUsers).SingleOrDefault();
+                //            uniqueusers_today = lstusers.Where(x => x.fk_rid == users.fk_rid).Select(x => x.UniqueUsers_Today).SingleOrDefault();
+                //            userstoday = lstusers.Where(x => x.fk_rid == users.fk_rid).Select(x => x.Users_Today).SingleOrDefault();
+                //            ErrorLogs.LogErrorData("fk_rid=" + users.fk_rid,"total users"+totalusers );
+                //            st_count = dc.stat_counts.Where(x => x.FK_Rid == users.fk_rid).Select(y => y).SingleOrDefault();
+                //            if (st_count != null)
+                //            {
+                //                st_count.UsersToday = (userstoday > 0) ? (st_count.UsersToday + userstoday) : st_count.UsersToday;
+                //                st_count.UrlTotal_Today = st_count.UsersToday;
+                //                //st_count.UniqueUsersToday = (users.UniqueUsers_Today > 0) ? (st_count.UniqueUsersToday + users.UniqueUsers_Today) : st_count.UniqueUsersToday;
+                //                st_count.UniqueUsers = (uniqueusers > 0) ? (uniqueusers) : st_count.UniqueUsers;
+                //                st_count.UniqueUsersToday = (uniqueusers_today > 0) ? (st_count.UniqueUsersToday + uniqueusers_today) : st_count.UniqueUsersToday;
+                //                st_count.TotalUsers = (totalusers > 0) ? (totalusers) : st_count.TotalUsers;
+                //                st_count.UrlPercent_Today = (st_count.UsersYesterday == 0) ? 0 : ((st_count.UsersToday - st_count.UsersYesterday) / (st_count.UsersYesterday));
+                //                //if (cntvisits == 0)
+                //                //    st_count.NoVisitsTotal_Today = st_count.TotalUsers - st_count.UniqueVisitsToday;
+                //                if ((st_count.UniqueVisitsToday > 0 && ((dc.shorturldatas.Max(x => x.PK_Shorturl)) > (dc.shorturlclickreferences.Select(x => x.Ref_ShorturlClickID).FirstOrDefault())) && (st_count.NoVisitsTotal_Today != (st_count.UsersToday - st_count.UniqueVisitsToday))))
+                //                    st_count.NoVisitsTotal_Today = st_count.UsersToday - st_count.UniqueVisitsToday;
+                //                else if (st_count.UniqueVisitsToday == 0)
+                //                    st_count.NoVisitsTotal_Today = st_count.UsersToday;
+                //                else
+                //                    st_count.NoVisitsTotal_Today = st_count.NoVisitsTotal_Today;
+                //                dc.SaveChanges();
+                //                //ErrorLogs.LogErrorData("unique users = " + st_count.UniqueUsers + "fk_rid = " + users.fk_rid +"total users = "+lstusers.Count(), "UniqueUsersToday = " + st_count.UniqueUsersToday.ToString() + "fk_rid = " + users.fk_rid);
+
+                //            }
+                //        }
+                //        //for admin
+                //        st_count_admin = dc.stat_counts.Where(x => x.FK_Rid == 0).SingleOrDefault();
+                //        if (st_count_admin != null)
+                //        {
+
+
+                //            st_count_admin.UsersToday = (lstusers != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UsersToday).Sum()) : st_count_admin.UsersToday;
+                //            st_count_admin.UrlTotal_Today = st_count_admin.UsersToday;
+                //            //st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (lstuniqueusers_tot.Select(x => x.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
+                //            st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
+                //            st_count_admin.UniqueUsersToday = (lstusers != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsersToday).Sum()) : st_count_admin.UniqueUsersToday;
+                //            st_count_admin.TotalUsers = (lstuniqueusers_tot != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.TotalUsers).Sum()) : st_count_admin.TotalUsers;
+                //            st_count_admin.UrlPercent_Today = (st_count_admin.UsersYesterday == 0) ? 0 : ((st_count_admin.UsersToday - st_count_admin.UsersYesterday) / (st_count_admin.UsersYesterday));
+
+                //            //st_count_admin.NoVisitsTotal_Today = dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.NoVisitsTotal_Today).Sum();
+                //            if ((st_count_admin.UniqueVisitsToday > 0 && ((dc.shorturldatas.Max(x => x.PK_Shorturl)) > (dc.shorturlclickreferences.Select(x => x.Ref_ShorturlClickID).FirstOrDefault())) && (st_count_admin.NoVisitsTotal_Today != (st_count_admin.UsersToday - st_count_admin.UniqueVisitsToday))))
+                //                st_count_admin.NoVisitsTotal_Today = st_count_admin.UsersToday - st_count_admin.UniqueVisitsToday;
+                //            else if (st_count_admin.UniqueVisitsToday == 0)
+                //                st_count_admin.NoVisitsTotal_Today = st_count_admin.UsersToday;
+                //            else
+                //                st_count_admin.NoVisitsTotal_Today = st_count_admin.NoVisitsTotal_Today;
+                //            //if (cntvisits == 0)
+                //            //    st_count_admin.NoVisitsTotal_Today = (st_count_admin.TotalUsers - st_count_admin.UniqueVisitsToday);
+                //            dc.SaveChanges();
+                //            //st_count_admin.UsersToday = (lstusers != null) ? (st_count_admin.UsersToday + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.UsersToday;
+                //            //st_count_admin.UniqueUsers = (lstuniqueusers_tot != null) ? (dc.stat_counts.Where(x => x.FK_Rid != 0).Select(y => y.UniqueUsers).Sum()) : st_count_admin.UniqueUsers;
+                //            //st_count_admin.UniqueUsersToday = (lstusers != null) ? (st_count_admin.UniqueUsersToday + lstusers.Select(x => x.UniqueUsers_Today).Sum()) : st_count_admin.UniqueUsersToday;
+                //            //st_count_admin.TotalUsers = (lstusers != null) ? (st_count_admin.TotalUsers + lstusers.Select(x => x.Users_Today).Sum()) : st_count_admin.TotalUsers;
+
+
+
+                //            //ErrorLogs.LogErrorData("StatsToday_Service visitis today st_count_admin " + st_count_admin.VisitsToday, lstvisits.Select(x => x.Visits_today).Sum().ToString());
+                //        }
+                //        //getnextuserid = dc.uiddatas.Any() ? dc.uiddatas.Max(x => x.PK_Uid) : 0;
+                //        //if (cntusers > 0)
+                //        //    clickref.Ref_UsersID = getnextuserid +1;
+                //        //dc.SaveChanges();
+                //    }
+
+                //    //stat_counts st_count = new stat_counts();
+                //    //st_count = dc.stat_counts.Where(x => x.FK_Rid == users.fk_rid).Select(y => y).SingleOrDefault();
+                //    //stat_counts st_count_admin = dc.stat_counts.Where(x => x.FK_Rid == 0).SingleOrDefault();
+                //    //if (cntvisits == 0)
+                //    //    st_count_admin.NoVisitsTotal_Today = (st_count_admin.TotalUsers - st_count_admin.UniqueVisitsToday);
+                //    //dc.SaveChanges();
+                //    //////users --end
+
+                //}
+            //}
+        }
+                
+        else
+         Stats_update(days_diff);
+
+
+            }
 
             catch (Exception ex)
             {
@@ -413,7 +478,51 @@ namespace StatsToday_Service
             }
         }
 
+        public void getcampaigntodaycounts(int? rid, out int userstoday, out int uniqueusers_today)
+        {
 
+            userstoday = 0; uniqueusers_today = 0;
+            var conn1 = System.Configuration.ConfigurationManager.ConnectionStrings["shortenURLConnectionString"].ConnectionString;
+            MySqlConnection connection = new MySqlConnection(conn1);
+            var csb = new MySqlConnectionStringBuilder(conn1);
+            string dbname = csb.Database;
+            string strQuery = "select COUNT(MobileNumber)  as UsersToday ,COUNT(distinct MobileNumber)  as uniqueUsersToday from UIDDATA where FK_RID=" + rid + " and cast(CreatedDate as date)=UTC_Date(); ";
+
+            //string strQuery = "SELECT `AUTO_INCREMENT` FROM  INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'shortenurl' AND TABLE_NAME   = 'uiddata';";
+            int id = 0;
+            //string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["shortenURLConnectionString"].ToString()
+            using (MySqlConnection conn = new MySqlConnection(conn1))
+            {
+                MySqlCommand cmd = new MySqlCommand(strQuery, conn);
+                try
+                {
+                    conn.Open();
+                    cmd.CommandTimeout = 2 * 60;
+                    //ErrorLogs.LogErrorData("statstodayservice,before execution of query", strQuery);
+                    MySqlDataReader myReader = cmd.ExecuteReader();
+                    //ErrorLogs.LogErrorData("statstodayservice,after execution of query", strQuery);
+                    campcount camptodaycounts = ((IObjectContextAdapter)dc)
+                          .ObjectContext
+                          .Translate<campcount>(myReader, "uiddatas", MergeOption.AppendOnly).SingleOrDefault();
+                    userstoday = camptodaycounts.UsersToday;
+                    uniqueusers_today = camptodaycounts.uniqueUsersToday;
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    ErrorLogs.LogErrorData("statstodayservice,getcampaigntodaycounts" + "..." + ex.InnerException + ex.StackTrace, ex.Message);
+
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+
+        }
+        public class campcount
+        {
+            public int UsersToday { get; set; }
+            public int uniqueUsersToday { get; set; }
+        }
         public void Stats_update(int days_diff)
         {
             try
@@ -546,7 +655,7 @@ namespace StatsToday_Service
                                  NoVisitsTotal_Week = ((st1.DaysCount_Week < 2) ? (st1.NoVisitsTotal_Today) : 0)
                                                    + ((st1.DaysCount_Week >= 2 && st1.DaysCount_Week < 7) ? (st1.NoVisitsTotal_Week + st1.NoVisitsTotal_Today) : 0),
                                  NoVisitsPercent_Week = ((st1.DaysCount_Week < 2) ? (st1.NoVisitsPercent_Today) : 0)
-                                                   + ((st1.DaysCount_Week >= 2 && st1.DaysCount_Week < 7) ? (st1.NoVisitsTotal_Week + st1.NoVisitsPercent_Today) : 0),
+                                                   + ((st1.DaysCount_Week >= 2 && st1.DaysCount_Week < 7) ? (st1.NoVisitsPercent_Week + st1.NoVisitsPercent_Today) : 0),
 
 
                                  UniqueVisits = st1.UniqueVisits,
